@@ -1,22 +1,17 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es2021': true,
+  env: {
+    browser: true,
+    es2021: true,
   },
-  'extends': [
-    'plugin:react/recommended',
-    'google',
-  ],
-  'parserOptions': {
-    'ecmaFeatures': {
-      'jsx': true,
-    },
-    'ecmaVersion': 'latest',
-    'sourceType': 'module',
+  extends: ['plugin:react/recommended', 'google'],
+  parserOptions: {
+    parser: 'babel-eslint',
+    sourceType: 'module',
+    allowImportExportEverywhere: true,
+    ecmaVersion: 'latest',
   },
-  'plugins': [
-    'react',
-  ],
-  'rules': {
+  plugins: ['react'],
+  rules: {
+    'linebreak-style': [`error`, `windows`],
   },
 };

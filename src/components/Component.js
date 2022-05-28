@@ -1,5 +1,7 @@
+/* eslint-disable */
+
 function Component() {
-    return;
+  return;
 }
 
 export default Component;
