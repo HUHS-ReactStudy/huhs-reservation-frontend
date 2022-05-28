@@ -1,11 +1,12 @@
 import React from 'react';
+import GlobalStyle from './styles/GlobalStyle';
 
-/**
- * App 함수
- *@return {React.HTMLAttributes<HTMLDivElement>}
- */
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <GlobalStyle />
+    </div>
+  );
 }
 
 export default App;
