@@ -12,5 +12,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
-  rules: {},
+  rules: {
+    'require-jsdoc': 'off',
+  },
 };
