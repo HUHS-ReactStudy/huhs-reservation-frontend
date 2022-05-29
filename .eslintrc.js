@@ -3,12 +3,18 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'google'],
+
+  extends: ['plugin:react/recommended', 'google', 'prettier'],
   parserOptions: {
-    parser: 'babel-eslint',
-    sourceType: 'module',
-    allowImportExportEverywhere: true,
+    ecmaFeatures: {
+      jsx: true,
+    },
     ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['react'],
+  rules: {
+    'require-jsdoc': 'off',
   },
   plugins: ['react'],
   rules: {},
