@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = {
   env: {
     browser: true,
@@ -12,6 +13,6 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    'linebreak-style': [`error`, `windows`],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
 };
