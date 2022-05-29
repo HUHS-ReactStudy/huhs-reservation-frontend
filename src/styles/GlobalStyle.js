@@ -60,12 +60,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Noto Sans KR' , sans-serif;
 }
 
- 
- html,body{
-     padding:0;
-     margin:0;
-     font-family: 'Noto Sans KR' , sans-serif;
- }
+html,body
+{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR' , sans-serif;
+}
 
 
  a{
@@ -79,9 +80,6 @@ button{
     cursor:pointer;
 }
 
-li{
-    list-style:none;
-} 
 
 
 `;
