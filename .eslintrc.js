@@ -1,4 +1,3 @@
-/* eslint-disable */
 module.exports = {
   env: {
     browser: true,
@@ -12,7 +11,5 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   plugins: ['react'],
-  rules: {
-    'prettier/prettier': ['error', { endOfLine: 'auto' }],
-  },
+  rules: {},
 };

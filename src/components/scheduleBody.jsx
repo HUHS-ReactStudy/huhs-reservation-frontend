@@ -1,4 +1,3 @@
-/* eslint-disable */
 import styled from 'styled-components';
 import FirstContentBox from './firstContentBox';
 import SecondContentBox from './secondContentBox';
