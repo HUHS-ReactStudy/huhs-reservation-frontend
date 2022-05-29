@@ -1,5 +1,6 @@
 /* eslint-disable */
 import styled from 'styled-components';
+import { memo } from 'react';
 
 const TotalBox = styled.div`
   margin-top: 40px;
@@ -47,7 +48,7 @@ const StartEndDate = styled.span`
   color: #73777b;
 `;
 
-const SecondContentBox = () => {
+const SecondContentBox = memo(() => {
   return (
     <TotalBox>
       <GroupBox className="first">
@@ -60,6 +61,6 @@ const SecondContentBox = () => {
       </GroupBox>
     </TotalBox>
   );
-};
+});
 
 export default SecondContentBox;

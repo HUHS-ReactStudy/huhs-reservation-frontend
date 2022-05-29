@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { useState } from 'react';
 import styled from 'styled-components';
+import { memo } from 'react';
 
 //동아리방 사용 목적 placeholder가 적혀있는 input태그
 const Input = styled.input`
@@ -76,9 +77,7 @@ const GroupBox = styled.div`
   }
 `;
 
-const colorChange = e => {};
-
-const FisrtContentBox = () => {
+const FisrtContentBox = memo(() => {
   const [state, setState] = useState([
     { color: '#F8DC81', id: 1 },
     { color: '#89D6A2', id: 2 },
@@ -121,6 +120,6 @@ const FisrtContentBox = () => {
       </GroupBox>
     </TotalBox>
   );
-};
+});
 
 export default FisrtContentBox;

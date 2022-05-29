@@ -56,7 +56,7 @@ const Schedule = () => {
   return (
     <MainBody>
       <ContentTitleBox>
-        <a href="#" class="cancel">
+        <a href="#" className="cancel">
           취소
         </a>
         <div className="main-title">일정등록</div>

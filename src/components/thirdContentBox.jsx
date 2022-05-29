@@ -1,5 +1,6 @@
 /* eslint-disable */
 import styled from 'styled-components';
+import { memo } from 'react';
 
 const TotalBox = styled.div`
   margin-top: 40px;
@@ -67,7 +68,7 @@ const DetailContentBox = () => {
   );
 };
 
-const ThirdContentBox = () => {
+const ThirdContentBox = memo(() => {
   return (
     <>
       <TotalBox>
@@ -87,6 +88,6 @@ const ThirdContentBox = () => {
       <DetailContentBox />
     </>
   );
-};
+});
 
 export default ThirdContentBox;
