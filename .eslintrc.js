@@ -3,8 +3,14 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-
-  extends: ['plugin:react/recommended', 'google', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'google',
+    'prettier',
+    'airbnb/base',
+    'eslint-config-prettier',
+    'plugin:react/jsx-runtime',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -12,10 +18,10 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'eslint-plugin-prettier'],
   rules: {
     'require-jsdoc': 'off',
+    'no-unused-vars': 'warn',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
-  plugins: ['react'],
-  rules: {},
 };

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import styled from 'styled-components';
 import { memo } from 'react';
 
@@ -7,7 +8,7 @@ const TotalBox = styled.div`
 
 const GroupBox = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   padding: 10px;
   width: 380px;
   height: 30px;
@@ -24,7 +25,6 @@ const GroupBox = styled.div`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    line-height: 30px;
   }
   & + & {
     margin-top: 0px;
@@ -38,25 +38,27 @@ const GroupBox = styled.div`
   }
 `;
 
-const StartEndDate = styled.span`
+const StartEndDate = styled.input`
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 30px;
   color: #73777b;
+  outline: none;
+  border: none;
+  cursor: pointer;
 `;
 
-const SecondContentBox = memo(() => {
+const SecondContentBox = memo(function SecondContentBox() {
   return (
     <TotalBox>
       <GroupBox className="first">
         <span>시작</span>
-        <StartEndDate>2022년 5월 16일(월) 오후 05:30</StartEndDate>
+        <StartEndDate type="datetime-local" placeholder="2022년 5월 16일(월) 오후 05:30" />
       </GroupBox>
       <GroupBox className="second">
         <span>종료</span>
-        <StartEndDate>2022년 5월 16일(월) 오후 07:30</StartEndDate>
+        <StartEndDate type="datetime-local" placeholder="2022년 5월 16일(월) 오후 07:30" />
       </GroupBox>
     </TotalBox>
   );

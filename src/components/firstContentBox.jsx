@@ -2,14 +2,14 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { memo } from 'react';
 
-//동아리방 사용 목적 placeholder가 적혀있는 input태그
+//  동아리방 사용 목적 placeholder가 적혀있는 input태그
 const Input = styled.input`
   border: none;
-  font-size: 100px;
+  font-size: 10px;
   outline: none;
 `;
 
-//동아리방 사용 목적이라고 적힌 input태그 옆에 색깔박스를 의미
+//  동아리방 사용 목적이라고 적힌 input태그 옆에 색깔박스를 의미
 const ColorBox = styled.span`
   width: 18px;
   height: 18px;
@@ -76,7 +76,7 @@ const GroupBox = styled.div`
   }
 `;
 
-const FisrtContentBox = memo(() => {
+const FisrtContentBox = memo(function FirstContentBox() {
   const [state, setState] = useState([
     { color: '#F8DC81', id: 1 },
     { color: '#89D6A2', id: 2 },

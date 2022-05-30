@@ -51,7 +51,7 @@ const ContentTitleBox = styled.main`
   }
 `;
 
-const Schedule = () => {
+const Schedule = function Schedule() {
   return (
     <MainBody>
       <ContentTitleBox>

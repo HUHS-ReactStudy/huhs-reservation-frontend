@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import NotoSansThin from '../styles/fonts/NotoSansKR-Thin.otf';

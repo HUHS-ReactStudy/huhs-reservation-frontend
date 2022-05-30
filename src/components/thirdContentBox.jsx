@@ -67,7 +67,7 @@ const DetailContentBox = () => {
   );
 };
 
-const ThirdContentBox = memo(() => {
+const ThirdContentBox = memo(function ThirdContentBox() {
   return (
     <>
       <TotalBox>
