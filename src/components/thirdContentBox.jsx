@@ -11,6 +11,7 @@ const TotalBox = styled.div`
     font-size: 16px;
     padding: 10px;
     outline: none;
+    resize: none;
   }
 `;
 
@@ -19,7 +20,6 @@ const GroupBox = styled.div`
   align-items: flex-start;
   padding: 10px;
   width: 380px;
-  height: 30px;
   background: #ffffff;
   justify-content: space-between;
 
@@ -30,7 +30,6 @@ const GroupBox = styled.div`
   flex-grow: 0;
 
   & span {
-    font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

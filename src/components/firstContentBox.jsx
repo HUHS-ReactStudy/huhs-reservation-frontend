@@ -40,7 +40,6 @@ const GroupBox = styled.div`
   align-items: flex-start;
   padding: 10px;
   width: 380px;
-  height: 30px;
   background: #ffffff;
 
   /* Inside auto layout */

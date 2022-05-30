@@ -1,4 +1,3 @@
-/* eslint-disable */
 import styled from 'styled-components';
 import { memo } from 'react';
 
@@ -11,7 +10,6 @@ const GroupBox = styled.div`
   align-items: center;
   padding: 10px;
   width: 380px;
-  height: 30px;
   background: #ffffff;
   justify-content: space-between;
   /* Inside auto layout */
