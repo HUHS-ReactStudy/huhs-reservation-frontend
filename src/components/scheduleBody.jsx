@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import FirstContentBox from './firstContentBox';
 import SecondContentBox from './secondContentBox';
 import ThirdContentBox from './thirdContentBox';
-
+import React from 'react';
 const MainBody = styled.div`
   margin: auto;
   // position: relative;

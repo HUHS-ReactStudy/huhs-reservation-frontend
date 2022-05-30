@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { memo } from 'react';
+import React from 'react';
 
 //  동아리방 사용 목적 placeholder가 적혀있는 input태그
 const Input = styled.input`

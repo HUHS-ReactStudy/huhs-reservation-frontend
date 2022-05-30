@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { memo } from 'react';
-
+import React from 'react';
 const TotalBox = styled.div`
   margin-top: 40px;
 `;
