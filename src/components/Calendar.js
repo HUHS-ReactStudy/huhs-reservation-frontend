@@ -91,7 +91,6 @@ const Week = ({ start }) => {
     } else if (num > NowEnd) {
       return num - NowEnd;
     } else return num;
-    // testcode
   };
 
   return (
