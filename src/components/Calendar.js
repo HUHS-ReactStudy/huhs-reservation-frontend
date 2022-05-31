@@ -36,7 +36,7 @@ const Header = styled.div`
 
 const Month = styled.p`
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
 `;
 
 const HUHS = styled.p`
@@ -49,27 +49,40 @@ const DayOfWeekBox = styled.div`
   display: flex;
   font-size: 11px;
   justify-content: space-between;
-  margin: 0px 10px 0px 10px;
-  padding: 9px;
+  padding: 9px 0px 9px 0px;
+  margin: 0px 11px 0px 11px;
   border-bottom: 3px solid #e4e4e4;
 `;
 
 const DayOfWeek = styled.p`
   color: #73777b;
+  width: 40px;
+  display: flex;
+  justify-content: center;
 `;
 
 const CalendarDate = styled.div``;
 
 const WeekBox = styled.div`
   margin: 0px 10px 0px 10px;
-  padding: 7px 11px 0px 11px;
   border-bottom: 3px solid #e4e4e4;
   height: 64.8px;
   justify-content: space-between;
   display: flex;
 `;
 
-const WeekDate = styled.p``;
+const WeekDate = styled.p`
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  color: ${props => (props.day === 0 ? '#F55353' : props.day === 6 ? '#668BC2' : '#73777b')};
+  opacity: ${props => props.opacity && 0.4};
+`;
+
+const DayName = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
 // eslint-disable-next-line react/prop-types
 const Week = ({ start }) => {
@@ -83,25 +96,25 @@ const Week = ({ start }) => {
 
   const LastMonthEnd = dayjs(`${NowYear}-${NowMonth - 1}`)
     .endOf('M')
-    .format('D'); // 저번달 마지막날
-
-  const giveDate = num => {
-    if (num < NowStart) {
-      return parseInt(LastMonthEnd) + num;
-    } else if (num > NowEnd) {
-      return num - NowEnd;
-    } else return num;
-  };
+    .format('D'); // 저번달 마지막날 // 수정하기. 12월 1월
 
   return (
     <WeekBox>
-      <WeekDate>{giveDate(NumStart)}</WeekDate>
-      <WeekDate>{giveDate(NumStart + 1)}</WeekDate>
-      <WeekDate>{giveDate(NumStart + 2)}</WeekDate>
-      <WeekDate>{giveDate(NumStart + 3)}</WeekDate>
-      <WeekDate>{giveDate(NumStart + 4)}</WeekDate>
-      <WeekDate>{giveDate(NumStart + 5)}</WeekDate>
-      <WeekDate>{giveDate(NumStart + 6)}</WeekDate>
+      {DayName.map((_, i) => {
+        if (NumStart + i < NowStart) {
+          return (
+            <WeekDate day={i} opacity="true">
+              {parseInt(LastMonthEnd) + NumStart + i}
+            </WeekDate>
+          );
+        } else if (NumStart + i > NowEnd) {
+          return (
+            <WeekDate day={i} opacity="true">
+              {NumStart + i - NowEnd}
+            </WeekDate>
+          );
+        } else return <WeekDate day={i}>{NumStart + i}</WeekDate>;
+      })}
     </WeekBox>
   );
 };
@@ -120,13 +133,9 @@ const Calendar = () => {
           </Header>
 
           <DayOfWeekBox>
-            <DayOfWeek>SUN</DayOfWeek>
-            <DayOfWeek>MON</DayOfWeek>
-            <DayOfWeek>TUE</DayOfWeek>
-            <DayOfWeek>WED</DayOfWeek>
-            <DayOfWeek>THU</DayOfWeek>
-            <DayOfWeek>FRI</DayOfWeek>
-            <DayOfWeek>SAT</DayOfWeek>
+            {DayName.map(day => (
+              <DayOfWeek key={day}>{day}</DayOfWeek>
+            ))}
           </DayOfWeekBox>
 
           <CalendarDate>
