@@ -65,22 +65,41 @@ const CalendarDate = styled.div``;
 
 const WeekBox = styled.div`
   margin: 0px 10px 0px 10px;
+  padding: 0px 9px 0px 9px;
   border-bottom: 3px solid #e4e4e4;
   height: 64.8px;
   justify-content: space-between;
   display: flex;
+  position: relative;
 `;
 
 const WeekDate = styled.p`
-  width: 40px;
+  background-color: ${props =>
+    props.now === parseInt(dayjs().format(`DD`)) ? 'rgba(159, 195, 228, 0.45)' : '#fff'};
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
   display: flex;
   justify-content: center;
-  padding-top: 7px;
+  padding-top: 6px;
+  margin-top: 3px;
   font-size: 12px;
   font-weight: 700;
   color: ${props => (props.day === 0 ? '#F55353' : props.day === 6 ? '#668BC2' : '#73777b')};
   opacity: ${props => props.opacity && 0.4};
 `;
+
+// const TodayCircle = styled.div`
+//   position: absolute;
+//   width: 25px;
+//   height: 25px;
+//   border-radius: 50%;
+//   background-color: #9fc3e473;
+//   opacity: 45%;
+//   justify-content: center;
+//   z-index: 999;
+//   display: ${props => (props.day === parseInt(dayjs().format(`DD`)) ? 'flex' : 'none')};
+// `;
 
 const DayName = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
@@ -105,17 +124,31 @@ const Week = ({ start }) => {
       {DayName.map((_, i) => {
         if (NumStart + i < NowStart) {
           return (
-            <WeekDate day={i} opacity="true">
-              {parseInt(LastMonthEnd) + NumStart + i}
-            </WeekDate>
+            <div key={i}>
+              <WeekDate day={i} opacity="true" now={NumStart + i}>
+                {parseInt(LastMonthEnd) + NumStart + i}
+              </WeekDate>
+              {/* <TodayCircle day={NumStart + i} /> */}
+            </div>
           );
         } else if (NumStart + i > NowEnd) {
           return (
-            <WeekDate day={i} opacity="true">
-              {NumStart + i - NowEnd}
-            </WeekDate>
+            <div key={i}>
+              <WeekDate day={i} opacity="true" now={NumStart + i}>
+                {NumStart + i - NowEnd}
+              </WeekDate>
+              {/* <TodayCircle day={NumStart + i} /> */}
+            </div>
           );
-        } else return <WeekDate day={i}>{NumStart + i}</WeekDate>;
+        } else
+          return (
+            <div key={i}>
+              <WeekDate day={i} now={NumStart + i}>
+                {NumStart + i}
+              </WeekDate>
+              {/* <TodayCircle day={NumStart + i} /> */}
+            </div>
+          );
       })}
     </WeekBox>
   );
