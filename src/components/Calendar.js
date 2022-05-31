@@ -94,9 +94,11 @@ const Week = ({ start }) => {
   const NowYear = dayjs().format('YYYY'); // 올해
   const NowMonth = dayjs().format('MM'); // 이번달
 
-  const LastMonthEnd = dayjs(`${NowYear}-${NowMonth - 1}`)
+  const getLastMonth = NowMonth => (NowMonth === 1 ? 12 : NowMonth - 1);
+
+  const LastMonthEnd = dayjs(`${NowYear}-${getLastMonth(NowMonth)}`)
     .endOf('M')
-    .format('D'); // 저번달 마지막날 // 수정하기. 12월 1월
+    .format('D'); // 저번달 마지막날
 
   return (
     <WeekBox>
