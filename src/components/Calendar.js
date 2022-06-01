@@ -25,7 +25,14 @@ const OuterLayout = styled.div`
 
 const CalendarBox = styled.div``;
 
-const ScheduleBox = styled.div``;
+const ScheduleBox = styled.div`
+  display: flex;
+  margin: 9px 0px 0px 0px;
+  background-color: rgba(228, 228, 228, 0.3);
+  width: 100%;
+  height: 272px;
+  border-radius: 0px 0px 10px 10px;
+`;
 
 const Header = styled.div`
   height: 59px;
@@ -161,8 +168,7 @@ const Calendar = () => {
             <Week start={1 - NowStartDay + 35} />
           </CalendarDate>
         </CalendarBox>
-
-        <ScheduleBox></ScheduleBox>
+        <ScheduleBox />
       </OuterLayout>
     </Container>
   );
