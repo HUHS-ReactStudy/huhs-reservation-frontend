@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// 학번입력창 모달 관련 컴포넌트입니다.
 const InputStudentNumber = () => {
   return (
     <Container>
@@ -15,6 +16,7 @@ const InputStudentNumber = () => {
   );
 };
 
+// 학번입력란 전체를 감싸고 있는 컨테이너입니다.
 const Container = styled.form`
   width: 320px;
   height: 200px;
@@ -26,6 +28,7 @@ const Container = styled.form`
   align-items: center;
 `;
 
+// 학번 입력하는 Input을 감싸주는 컨테이너입니다.
 const UserInputContainer = styled.section`
   display: flex;
   justify-content: center;
@@ -47,18 +50,21 @@ const UserInput = styled.input`
   &::placeholder {
     color: #dbdbdb;
   }
-
+  /* 하단의 코드 같은 경우는 input의 타입을 number로 했을때 
+  숫자를 조정하는 화살표들이 생기는 것을 없애주는 코드입니다. */
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
 `;
 
+// 취소와 확인 버튼 두개를 감싸주는 컨테이너입니다.
 const ButtonContainer = styled.section`
   display: flex;
   border-top: 1px solid #e5e5e5;
 `;
 
+// 취소 버튼 관련 CSS 입니다.
 const CancelButton = styled.button`
   width: 160px;
   height: 61px;
@@ -66,6 +72,7 @@ const CancelButton = styled.button`
   font-weight: 700;
 `;
 
+// 확인 버튼 관련 CSS 입니다.
 const ConfirmButton = styled.button`
   width: 160px;
   height: 61px;
