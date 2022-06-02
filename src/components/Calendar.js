@@ -119,13 +119,13 @@ const Week = ({ start }) => {
       {DayName.map((_, i) => {
         if (NumStart + i < NowStart) {
           return (
-            <WeekDate day={i} opacity="true" now={NumStart + i} key={i}>
+            <WeekDate day={i} opacity now={NumStart + i} key={i}>
               {parseInt(LastMonthEnd) + NumStart + i}
             </WeekDate>
           );
         } else if (NumStart + i > NowEnd) {
           return (
-            <WeekDate day={i} opacity="true" now={NumStart + i} key={i}>
+            <WeekDate day={i} opacity now={NumStart + i} key={i}>
               {NumStart + i - NowEnd}
             </WeekDate>
           );
