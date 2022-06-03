@@ -35,7 +35,6 @@ const HeaderBox = styled.header`
   height: 52px;
   background: #ffffff;
   border-radius: 10px 10px 0px 0px;
-  font-style: normal;
   font-weight: 500;
   font-size: 18px;
   color: #000000;
