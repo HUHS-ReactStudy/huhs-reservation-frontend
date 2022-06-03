@@ -13,7 +13,6 @@ const GroupBoxUp = styled(GroupBox)`
 `;
 // 시작, 종료 입력 input태그
 const DateInput = styled.input`
-  font-style: normal;
   font-weight: 500;
   font-size: 13px;
   width: 179px;

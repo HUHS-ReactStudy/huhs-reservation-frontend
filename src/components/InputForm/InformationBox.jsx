@@ -17,7 +17,6 @@ const DetailContentBox = styled.textarea`
   resize: none;
   font-size: 14px;
   font-weight: 350px;
-  font-style: normal;
   border: none;
 `;
 

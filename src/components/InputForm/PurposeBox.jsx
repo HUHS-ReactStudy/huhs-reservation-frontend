@@ -13,7 +13,6 @@ const GroupBox = styled.div`
   section {
     display: flex;
     align-items: center;
-    font-style: normal;
     font-weight: 400;
   }
   input {
