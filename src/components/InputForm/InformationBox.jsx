@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GroupBoxUp } from './TimeSetBox';
-
+// 이름, 학번, 학과를 입력하는 input태그입니다.
 const InformationInput = styled.input`
   font-size: 14px;
   text-align: right;
 `;
+// 상세내용을 작성하는 textarea태그입니다.
 const DetailContentBox = styled.textarea`
   width: 358px;
   height: 110px;
@@ -20,7 +21,7 @@ const DetailContentBox = styled.textarea`
   border: none;
 `;
 
-const InformationBox = function informationBox() {
+const InformationBox = React.memo(function informationBox() {
   return (
     <div>
       <GroupBoxUp className="underLine topBox">
@@ -44,6 +45,6 @@ const InformationBox = function informationBox() {
       <DetailContentBox placeholder="상세내용" />
     </div>
   );
-};
+});
 
 export default InformationBox;

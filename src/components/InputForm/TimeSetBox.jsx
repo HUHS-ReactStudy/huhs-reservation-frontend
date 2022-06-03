@@ -11,7 +11,7 @@ const GroupBoxUp = styled(GroupBox)`
     justify-content: space-between;
   }
 `;
-// 시작, 종료 입력 input태그
+// 시작, 종료 시간을 입력하는 input태그
 const DateInput = styled.input`
   font-weight: 500;
   font-size: 13px;
@@ -20,7 +20,7 @@ const DateInput = styled.input`
   color: #73777b;
 `;
 
-const TimeSetBox = function timeSetBox() {
+const TimeSetBox = React.memo(function timeSetBox() {
   return (
     <div>
       <GroupBoxUp className="underLine topBox">
@@ -37,7 +37,7 @@ const TimeSetBox = function timeSetBox() {
       </GroupBoxUp>
     </div>
   );
-};
+});
 
 export default TimeSetBox;
 export { GroupBoxUp };

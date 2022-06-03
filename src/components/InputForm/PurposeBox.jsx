@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 
-// 각 항목을 덮고 있는 박스입니다.
+// 각 줄의 항목들을 담고 있는 박스입니다.(기능이 비슷하여 export하여 재사용하였습니다.)
 const GroupBox = styled.div`
   display: flex;
   width: 358px;
@@ -29,7 +29,7 @@ const GroupBox = styled.div`
     border-radius: 0px 0px 10px 10px;
   }
 `;
-// 동아리방 사용목적 input태그 옆에 색깔표시입니다.
+// 동아리방 사용목적이 적힌 input태그 옆에 색깔표시입니다.
 const ColorPoint = styled.span`
   width: 16px;
   height: 16px;
@@ -52,7 +52,7 @@ const GroupColor = styled.div`
   }
 `;
 
-const PurposeBox = function purposeBox() {
+const PurposeBox = React.memo(function purposeBox() {
   const [state] = useState([
     { color: '#F8DC81', id: 1 },
     { color: '#89D6A2', id: 2 },
@@ -95,7 +95,7 @@ const PurposeBox = function purposeBox() {
       </GroupBox>
     </div>
   );
-};
+});
 
 export default PurposeBox;
 export { GroupBox };
