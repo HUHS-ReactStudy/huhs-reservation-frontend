@@ -39,8 +39,8 @@ const HeaderBox = styled.header`
   font-weight: 500;
   font-size: 18px;
   color: #000000;
-  a {
-    text-decoration: none;
+  button {
+    border: none;
     font-weight: 400;
     font-size: 15px;
   }
@@ -51,9 +51,9 @@ const FormBody = function formBody() {
     <BackgroundBody>
       <MainBody>
         <HeaderBox>
-          <a href="#">취소</a>
+          <button>취소</button>
           <div className="main-title">일정등록</div>
-          <a href="#">저장</a>
+          <button href="#">저장</button>
         </HeaderBox>
         <PurposeBox />
         <TimeSetBox />
