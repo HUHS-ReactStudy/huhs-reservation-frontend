@@ -14,7 +14,5 @@ module.exports = {
   plugins: ['react', 'prettier'],
   rules: {
     'require-jsdoc': 'off',
-    'no-unused-vars': 'warn',
-    'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
 };
