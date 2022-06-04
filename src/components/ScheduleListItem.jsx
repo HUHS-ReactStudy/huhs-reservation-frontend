@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FaRegBell } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
+// 동아리방 사용 신청이 완료되면 생기는 개별 아이템에 해당하는 컴포넌트입니다.
 const ScheduleListItem = ({ scheduleData }) => {
   const { title, reservationTime, color } = scheduleData;
   return (

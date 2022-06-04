@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as PlusIcon } from '../assets/images/plus.svg';
 
+// 새로운 일정 등록을 생성할 수 있는 버튼에 해당하는 컴포넌트입니다.
 const AddScheduleButton = () => {
   return (
     <AddButton type="button">

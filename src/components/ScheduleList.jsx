@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ScheduleListItem from './ScheduleListItem';
 
+// 동아리방 신청 일정들 전체를 담아주는 컴포넌트입니다.
 const ScheduleList = () => {
   const [scheduleDatas] = useState([
     {
