@@ -19,7 +19,7 @@ const DateInput = styled.input`
   height: 19px;
   color: #73777b;
 `;
-// eslint-disable-next-line react/prop-types
+
 const TimeSetBox = React.memo(function timeSetBox({ pageReset }) {
   const InputRefStart = useRef();
   const InputRefEnd = useRef();
@@ -44,6 +44,10 @@ const TimeSetBox = React.memo(function timeSetBox({ pageReset }) {
     </div>
   );
 });
+
+TimeSetBox.propTypes = {
+  pageReset: PropTypes.string,
+};
 
 export default TimeSetBox;
 export { GroupBoxUp };

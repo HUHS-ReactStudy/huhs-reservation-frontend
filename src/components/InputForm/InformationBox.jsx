@@ -20,7 +20,7 @@ const DetailContentBox = styled.textarea`
   font-weight: 350px;
   border: none;
 `;
-// eslint-disable-next-line react/prop-types
+
 const InformationBox = React.memo(function informationBox({ pageReset }) {
   const InputRefName = useRef();
   const InputRefNumber = useRef();
@@ -56,5 +56,9 @@ const InformationBox = React.memo(function informationBox({ pageReset }) {
     </div>
   );
 });
+
+InformationBox.propTypes = {
+  pageReset: PropTypes.string,
+};
 
 export default InformationBox;

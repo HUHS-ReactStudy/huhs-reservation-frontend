@@ -1,6 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
+import { PropTypes } from 'prop-types';
 
 // 각 줄의 항목들을 담고 있는 박스입니다.(기능이 비슷하여 export하여 재사용하였습니다.)
 const GroupBox = styled.div`
@@ -52,7 +53,6 @@ const GroupColor = styled.div`
   }
 `;
 
-// eslint-disable-next-line react/prop-types
 const PurposeBox = React.memo(function purposeBox({ pageReset }) {
   const [state] = useState([
     { color: '#F8DC81', id: 1 },
@@ -100,6 +100,10 @@ const PurposeBox = React.memo(function purposeBox({ pageReset }) {
     </div>
   );
 });
+
+PurposeBox.propTypes = {
+  pageReset: PropTypes.string,
+};
 
 export default PurposeBox;
 export { GroupBox };
