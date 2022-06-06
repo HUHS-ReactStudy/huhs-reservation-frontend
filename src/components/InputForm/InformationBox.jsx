@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { GroupBoxUp } from './TimeSetBox';
 // 이름, 학번, 학과를 입력하는 input태그입니다.
@@ -20,29 +20,39 @@ const DetailContentBox = styled.textarea`
   font-weight: 350px;
   border: none;
 `;
-
-const InformationBox = React.memo(function informationBox() {
+// eslint-disable-next-line react/prop-types
+const InformationBox = React.memo(function informationBox({ pageReset }) {
+  const InputRefName = useRef();
+  const InputRefNumber = useRef();
+  const InputRefMajor = useRef();
+  const InputRefDetail = useRef();
+  if (pageReset === '100vh') {
+    InputRefName.current.value = '';
+    InputRefNumber.current.value = '';
+    InputRefMajor.current.value = '';
+    InputRefDetail.current.value = '';
+  }
   return (
     <div>
       <GroupBoxUp className="underLine topBox">
         <section>
           <span>이름</span>
-          <InformationInput placeholder="이름을 입력해주세요" />
+          <InformationInput placeholder="이름을 입력해주세요" ref={InputRefName} />
         </section>
       </GroupBoxUp>
       <GroupBoxUp className="underLine">
         <section>
           <span>학번</span>
-          <InformationInput placeholder="학번을 입력해주세요" />
+          <InformationInput placeholder="학번을 입력해주세요" ref={InputRefNumber} />
         </section>
       </GroupBoxUp>
       <GroupBoxUp className="bottomBox">
         <section>
           <span>학과</span>
-          <InformationInput placeholder="학과를입력해주세요" />
+          <InformationInput placeholder="학과를입력해주세요" ref={InputRefMajor} />
         </section>
       </GroupBoxUp>
-      <DetailContentBox placeholder="상세내용" />
+      <DetailContentBox placeholder="상세내용" ref={InputRefDetail} />
     </div>
   );
 });

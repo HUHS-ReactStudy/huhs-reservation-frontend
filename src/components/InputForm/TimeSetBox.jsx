@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useRef } from 'react';
 import { GroupBox } from './PurposeBox';
 //  GroupBox스타일 컴포넌트 기능을 확장하기 위해서 사용
 const GroupBoxUp = styled(GroupBox)`
@@ -19,20 +19,26 @@ const DateInput = styled.input`
   height: 19px;
   color: #73777b;
 `;
-
-const TimeSetBox = React.memo(function timeSetBox() {
+// eslint-disable-next-line react/prop-types
+const TimeSetBox = React.memo(function timeSetBox({ pageReset }) {
+  const InputRefStart = useRef();
+  const InputRefEnd = useRef();
+  if (pageReset === '100vh') {
+    InputRefStart.current.value = '';
+    InputRefEnd.current.value = '';
+  }
   return (
     <div>
       <GroupBoxUp className="underLine topBox">
         <section>
           <span>시작</span>
-          <DateInput type="datetime-local" />
+          <DateInput type="datetime-local" ref={InputRefStart} />
         </section>
       </GroupBoxUp>
       <GroupBoxUp className="bottomBox">
         <section>
           <span>종료</span>
-          <DateInput type="datetime-local" />
+          <DateInput type="datetime-local" ref={InputRefEnd} />
         </section>
       </GroupBoxUp>
     </div>

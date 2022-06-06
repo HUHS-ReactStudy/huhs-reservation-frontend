@@ -6,9 +6,16 @@ import InformationBox from './InformationBox';
 import EditContext from './CreateContext';
 import { useContext } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
+
 // 일정폼 외부의 하얀 배경의 전체 창을 의미합니다.
 const BackgroundBody = styled.div`
-  height: 100vh;
+  position: fixed;
+  bottom: 1px;
+  height: ${props => props.height};
+  background: white;
+  width: 390px;
+  transition: 0.8s;
+  overflow: scroll;
 `;
 // 회색배경의 일정폼 몸체를 의미합니다.
 const MainBody = styled.main`
@@ -27,6 +34,7 @@ const MainBody = styled.main`
     margin-top: 32px;
   }
 `;
+
 // 취소, 일정등록, 저장 등을 담고 있는 header입니다.
 const HeaderBox = styled.header`
   display: flex;
@@ -64,21 +72,31 @@ const CancelButton = styled.button`
     margin-right: 8.5px;
   }
 `;
-
+// PurposeBox, TimeSetBox, InformationBox에 Reset props을 전달하여 창을 내렸다 다시 올리면 내용이 초기화 되도록 하였습니다.
 const FormBody = function formBody() {
-  const { state } = useContext(EditContext);
+  const {
+    state: { title, adHeight },
+    actions: { setHeight },
+  } = useContext(EditContext);
+
   return (
-    <BackgroundBody>
+    <BackgroundBody height={adHeight}>
       <MainBody>
         <HeaderBox>
-          <button>취소</button>
-          <div className="main-title">{state}</div>
+          <button
+            onClick={() => {
+              setHeight('0vh');
+            }}
+          >
+            취소
+          </button>
+          <div className="main-title">{title}</div>
           <button href="#">저장</button>
         </HeaderBox>
-        <PurposeBox />
-        <TimeSetBox />
-        <InformationBox />
-        {state === '일정편집' ? (
+        <PurposeBox pageReset={adHeight} />
+        <TimeSetBox pageReset={adHeight} />
+        <InformationBox pageReset={adHeight} />
+        {title === '일정편집' ? (
           <CancelButton>
             <FaRegTrashAlt className="trash-icon" />
             일정 삭제

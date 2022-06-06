@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 
@@ -52,7 +52,8 @@ const GroupColor = styled.div`
   }
 `;
 
-const PurposeBox = React.memo(function purposeBox() {
+// eslint-disable-next-line react/prop-types
+const PurposeBox = React.memo(function purposeBox({ pageReset }) {
   const [state] = useState([
     { color: '#F8DC81', id: 1 },
     { color: '#89D6A2', id: 2 },
@@ -60,21 +61,24 @@ const PurposeBox = React.memo(function purposeBox() {
     { color: '#B67DDF', id: 4 },
   ]);
   const [colors, setColors] = useState('#F8DC81');
-
-  const colorChange = id => {
+  const InputRef = useRef();
+  if (pageReset === '100vh') {
+    InputRef.current.value = '';
+  }
+  // useCallback을 사용하여 보았다.
+  const colorChange = useCallback(id => {
     let newColor = '';
     state.forEach(item => {
       item.id === id ? (newColor = item.color) : item;
     });
     setColors(newColor);
-  };
-
+  }, []);
   return (
     <div>
       <GroupBox className="underLine topBox">
         <section>
           <ColorPoint color={colors} />
-          <input placeholder="동아리방 사용 목적" />
+          <input placeholder="동아리방 사용 목적" ref={InputRef} />
         </section>
       </GroupBox>
       <GroupBox className="bottomBox">

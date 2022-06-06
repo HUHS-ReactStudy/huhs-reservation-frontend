@@ -1,12 +1,16 @@
 import React, { createContext, useState } from 'react';
 
-const EditContext = createContext('일정등록');
+const EditContext = createContext({
+  state: { title: '일정등록', adHeight: '0vh' },
+  actions: { setTitle: () => {}, setHeight: () => {} },
+});
 
 const EditProvider = function edit(props) {
-  const [state, setState] = useState('일정등록');
+  const [title, setTitle] = useState('일정등록');
+  const [adHeight, setHeight] = useState('0vh');
   const value = {
-    state: state,
-    actions: setState,
+    state: { title, adHeight },
+    actions: { setTitle, setHeight },
   };
   // eslint-disable-next-line react/prop-types
   return <EditContext.Provider value={value}>{props.children}</EditContext.Provider>;
