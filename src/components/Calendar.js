@@ -13,10 +13,10 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 `;
 
 const OuterLayout = styled.div`
+  margin: auto;
   background-color: #fff;
   width: 365px;
   height: 761px;
