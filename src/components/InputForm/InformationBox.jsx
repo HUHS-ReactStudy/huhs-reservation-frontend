@@ -7,6 +7,7 @@ const InformationInput = styled.input`
   text-align: right;
 `;
 // 상세내용을 작성하는 textarea태그입니다.
+// dd
 const DetailContentBox = styled.textarea`
   width: 358px;
   height: 110px;
