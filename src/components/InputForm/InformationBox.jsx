@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { GroupBoxUp } from './TimeSetBox';
+import PropTypes from 'prop-types';
+
 // 이름, 학번, 학과를 입력하는 input태그입니다.
 const InformationInput = styled.input`
   font-size: 14px;

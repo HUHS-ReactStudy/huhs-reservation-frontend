@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React, { useRef } from 'react';
 import { GroupBox } from './PurposeBox';
+import PropTypes from 'prop-types';
 //  GroupBox스타일 컴포넌트 기능을 확장하기 위해서 사용
 const GroupBoxUp = styled(GroupBox)`
   &input {
