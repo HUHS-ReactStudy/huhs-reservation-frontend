@@ -66,6 +66,7 @@ html,body
     padding:0;
     box-sizing: border-box;
     font-family: 'Noto Sans KR' , sans-serif;
+    overscroll-behavior-y: contain;
 }
 
 
