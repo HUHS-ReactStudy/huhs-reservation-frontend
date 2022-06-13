@@ -98,7 +98,6 @@ const WeekDate = styled.p`
 
 const DayName = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-// eslint-disable-next-line react/prop-types
 const Week = ({ start }) => {
   const NumStart = parseInt(start);
 
@@ -119,13 +118,13 @@ const Week = ({ start }) => {
       {DayName.map((_, i) => {
         if (NumStart + i < NowStart) {
           return (
-            <WeekDate day={i} opacity now={NumStart + i} key={i}>
+            <WeekDate day={i} opacity="true" now={NumStart + i} key={i}>
               {parseInt(LastMonthEnd) + NumStart + i}
             </WeekDate>
           );
         } else if (NumStart + i > NowEnd) {
           return (
-            <WeekDate day={i} opacity now={NumStart + i} key={i}>
+            <WeekDate day={i} opacity="true" now={NumStart + i} key={i}>
               {NumStart + i - NowEnd}
             </WeekDate>
           );
@@ -138,6 +137,10 @@ const Week = ({ start }) => {
       })}
     </WeekBox>
   );
+};
+
+Week.propTypes = {
+  start: PropTypes.string,
 };
 
 const Calendar = () => {
