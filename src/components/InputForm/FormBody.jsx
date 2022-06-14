@@ -4,9 +4,9 @@ import PurposeBox from './PurposeBox';
 import TimeSetBox from './TimeSetBox';
 import InformationBox from './InformationBox';
 import EditContext from './CreateContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
-
+import client from '../../client';
 // 일정폼 외부의 하얀 배경의 전체 창을 의미합니다.
 const BackgroundBody = styled.div`
   position: fixed;
@@ -73,11 +73,37 @@ const CancelButton = styled.button`
   }
 `;
 // PurposeBox, TimeSetBox, InformationBox에 Reset props을 전달하여 창을 내렸다 다시 올리면 내용이 초기화 되도록 하였습니다.
-const FormBody = function formBody() {
+const FormBody = () => {
+  const [colorSet] = useState([
+    { color: '#F8DC81', id: 1 },
+    { color: '#89D6A2', id: 2 },
+    { color: '#668BC2', id: 3 },
+    { color: '#B67DDF', id: 4 },
+  ]);
+  const [colors, setColors] = useState('#F8DC81');
   const {
-    state: { title, adHeight },
-    actions: { setHeight },
+    state: { title, adHeight, purpose, timeSet, information },
+    actions: { setHeight, setPurpose, setTimeSet, setInformation },
   } = useContext(EditContext);
+  const scheduleReg = () => {
+    const fetchData = async function fetch() {
+      const response = await client.post('/api/v1/reservations', {
+        name: information.name,
+        studentId: information.number,
+        department: information.major,
+        purpose: purpose,
+        year: parseInt(timeSet.start.substr(0, 4)),
+        month: parseInt(timeSet.start.substr(5, 2)),
+        day: parseInt(timeSet.start.substr(8, 2)),
+        startTime: timeSet.start.substr(11, 5),
+        endTime: timeSet.end.substr(11, 5),
+        color: colors,
+        description: information.detail,
+      });
+      console.log(response.data);
+    };
+    fetchData();
+  };
 
   return (
     <BackgroundBody height={adHeight}>
@@ -85,17 +111,28 @@ const FormBody = function formBody() {
         <HeaderBox>
           <button
             onClick={() => {
+              setColors('#F8DC81');
               setHeight('0vh');
+              setPurpose('');
+              setTimeSet({ start: '', end: '' });
+              setInformation({
+                name: '',
+                number: '',
+                major: '',
+                detail: '',
+              });
             }}
           >
             취소
           </button>
           <div className="main-title">{title}</div>
-          <button href="#">저장</button>
+          <button href="#" type="button" onClick={scheduleReg}>
+            저장
+          </button>
         </HeaderBox>
-        <PurposeBox pageReset={adHeight} />
-        <TimeSetBox pageReset={adHeight} />
-        <InformationBox pageReset={adHeight} />
+        <PurposeBox colorSet={colorSet} colors={colors} setColors={setColors} />
+        <TimeSetBox />
+        <InformationBox />
         {title === '일정편집' ? (
           <CancelButton>
             <FaRegTrashAlt className="trash-icon" />

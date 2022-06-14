@@ -1,7 +1,7 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useContext } from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
 import { PropTypes } from 'prop-types';
+import EditContext from './CreateContext';
 
 // 각 줄의 항목들을 담고 있는 박스입니다.(기능이 비슷하여 export하여 재사용하였습니다.)
 const GroupBox = styled.div`
@@ -53,39 +53,38 @@ const GroupColor = styled.div`
   }
 `;
 
-const PurposeBox = React.memo(function purposeBox({ pageReset }) {
-  const [state] = useState([
-    { color: '#F8DC81', id: 1 },
-    { color: '#89D6A2', id: 2 },
-    { color: '#668BC2', id: 3 },
-    { color: '#B67DDF', id: 4 },
-  ]);
-  const [colors, setColors] = useState('#F8DC81');
-  const InputRef = useRef();
-  if (pageReset === '100vh') {
-    InputRef.current.value = '';
-  }
+const PurposeBox = ({ colorSet, setColors, colors }) => {
+  const {
+    state: { purpose },
+    actions: { setPurpose },
+  } = useContext(EditContext);
+
   // useCallback을 사용하여 보았다.
   const colorChange = useCallback(id => {
     let newColor = '';
-    state.forEach(item => {
+    colorSet.forEach(item => {
       item.id === id ? (newColor = item.color) : item;
     });
     setColors(newColor);
   }, []);
+
+  const purposeInputChange = e => {
+    setPurpose(e.target.value);
+  };
+
   return (
     <div>
       <GroupBox className="underLine topBox">
         <section>
           <ColorPoint color={colors} />
-          <input placeholder="동아리방 사용 목적" ref={InputRef} />
+          <input placeholder="동아리방 사용 목적" value={purpose} onChange={purposeInputChange} />
         </section>
       </GroupBox>
       <GroupBox className="bottomBox">
         <GroupColor>
           <section>컬러</section>
           <section>
-            {state.map(item => (
+            {colorSet.map(item => (
               <ColorPoint
                 onClick={() => {
                   colorChange(item.id);
@@ -99,10 +98,12 @@ const PurposeBox = React.memo(function purposeBox({ pageReset }) {
       </GroupBox>
     </div>
   );
-});
+};
 
 PurposeBox.propTypes = {
-  pageReset: PropTypes.string,
+  colorSet: PropTypes.array,
+  colors: PropTypes.string,
+  setColors: PropTypes.func,
 };
 
 export default PurposeBox;
