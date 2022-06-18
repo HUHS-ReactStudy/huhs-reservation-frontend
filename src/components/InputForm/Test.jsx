@@ -23,6 +23,14 @@ const Test = function text() {
       >
         일정등록 test
       </button>
+      <button
+        onClick={() => {
+          setTitle('일정등록');
+          setHeight('100vh');
+        }}
+      >
+        일정수정!!!
+      </button>
     </>
   );
 };

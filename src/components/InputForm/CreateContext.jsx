@@ -2,7 +2,13 @@ import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const EditContext = createContext({
-  state: { title: '일정등록', adHeight: '0vh', purpose: '', timeSet: '', information: '' },
+  state: {
+    title: '일정등록',
+    adHeight: '0vh',
+    purpose: '',
+    timeSet: '',
+    information: '',
+  },
   actions: {
     setTitle: () => {},
     setHeight: () => {},
@@ -18,9 +24,10 @@ const EditProvider = ({ children }) => {
   const [purpose, setPurpose] = useState('');
   const [timeSet, setTimeSet] = useState({ start: '', end: '' });
   const [information, setInformation] = useState({ name: '', number: '', major: '', detail: '' });
+  const [tokenId, setTokenId] = useState({ token: '', id: '' });
   const value = {
-    state: { title, adHeight, purpose, timeSet, information },
-    actions: { setTitle, setHeight, setPurpose, setTimeSet, setInformation },
+    state: { title, adHeight, purpose, timeSet, information, tokenId },
+    actions: { setTitle, setHeight, setPurpose, setTimeSet, setInformation, setTokenId },
   };
 
   return <EditContext.Provider value={value}>{children}</EditContext.Provider>;

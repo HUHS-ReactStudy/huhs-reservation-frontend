@@ -82,25 +82,57 @@ const FormBody = () => {
   ]);
   const [colors, setColors] = useState('#F8DC81');
   const {
-    state: { title, adHeight, purpose, timeSet, information },
-    actions: { setHeight, setPurpose, setTimeSet, setInformation },
+    state: { title, adHeight, purpose, timeSet, information, tokenId },
+    actions: { setHeight, setPurpose, setTimeSet, setInformation, setTokenId },
   } = useContext(EditContext);
+  // axios body에 넣어줄 입력 데이터
+  const allData = {
+    name: information.name,
+    studentId: information.number,
+    department: information.major,
+    purpose: purpose,
+    year: parseInt(timeSet.start.substr(0, 4)),
+    month: parseInt(timeSet.start.substr(5, 2)),
+    day: parseInt(timeSet.start.substr(8, 2)),
+    startTime: timeSet.start.substr(11, 5),
+    endTime: timeSet.end.substr(11, 5),
+    color: colors,
+    description: information.detail,
+  };
+  // post를 이용한 일정등록
   const scheduleReg = () => {
     const fetchData = async function fetch() {
-      const response = await client.post('/api/v1/reservations', {
-        name: information.name,
-        studentId: information.number,
-        department: information.major,
-        purpose: purpose,
-        year: parseInt(timeSet.start.substr(0, 4)),
-        month: parseInt(timeSet.start.substr(5, 2)),
-        day: parseInt(timeSet.start.substr(8, 2)),
-        startTime: timeSet.start.substr(11, 5),
-        endTime: timeSet.end.substr(11, 5),
-        color: colors,
-        description: information.detail,
+      const response = await client.post(`/api/v1/reservations`, allData);
+      const data = response.data;
+      console.log(data);
+      const plusReservationId = data.reservationId;
+      console.log(plusReservationId);
+    };
+    fetchData();
+  };
+  // put을 이용한 일정 수정(학번 확인 모달 창으로부터 토큰을 넘겨받음)-tokenId라는 걸 받으면 id, token 2개를 사용할 수 있음.
+  const scheduleAdj = tokenId => {
+    const fetchData = async function fetch() {
+      const response = await client.put(`/api/v1/reservations${tokenId.id}`, allData, {
+        headers: {
+          Authorization: `Bearer ${tokenId.token}`,
+        },
       });
-      console.log(response.data);
+      const data = response.data;
+      console.log(data);
+    };
+    fetchData();
+  };
+  // delete를 이용한 일정 삭제(토큰과 id를 넘겨받음)-tokenId라는 걸 받으면 id, token 2개를 사용할 수 있음.
+  const scheduleDel = tokenId => {
+    const fetchData = async function fetch() {
+      const response = await client.delete(`/api/v1/reservations${tokenId.id}`, allData, {
+        headers: {
+          Authorization: `Bearer ${tokenId.token}`,
+        },
+      });
+      const data = response.data;
+      console.log(data);
     };
     fetchData();
   };
@@ -121,12 +153,23 @@ const FormBody = () => {
                 major: '',
                 detail: '',
               });
+              setTokenId({ token: '', id: '' });
             }}
           >
             취소
           </button>
           <div className="main-title">{title}</div>
-          <button href="#" type="button" onClick={scheduleReg}>
+          <button
+            href="#"
+            type="button"
+            onClick={
+              title === '일정등록'
+                ? scheduleReg
+                : () => {
+                    scheduleAdj(tokenId);
+                  }
+            }
+          >
             저장
           </button>
         </HeaderBox>
@@ -134,7 +177,11 @@ const FormBody = () => {
         <TimeSetBox />
         <InformationBox />
         {title === '일정편집' ? (
-          <CancelButton>
+          <CancelButton
+            onClick={() => {
+              scheduleDel(tokenId);
+            }}
+          >
             <FaRegTrashAlt className="trash-icon" />
             일정 삭제
           </CancelButton>
