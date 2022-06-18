@@ -20,5 +20,8 @@ const AddButton = styled.button`
   justify-content: center;
   align-items: center;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  bottom: 35px;
+  transform: translateX(302px);
 `;
 export default AddScheduleButton;

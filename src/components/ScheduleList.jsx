@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import ScheduleListItem from './ScheduleListItem';
 
 // 동아리방 신청 일정들 전체를 담아주는 컴포넌트입니다.
@@ -18,12 +19,19 @@ const ScheduleList = () => {
     },
   ]);
   return (
-    <div>
+    <Container>
       {scheduleDatas.map(scheduleData => {
         return <ScheduleListItem key={scheduleData.id} scheduleData={scheduleData} />;
       })}
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default ScheduleList;

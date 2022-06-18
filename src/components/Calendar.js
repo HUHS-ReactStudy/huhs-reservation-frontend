@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import React from 'react';
 import dayjs from 'dayjs';
+import ScheduleList from './ScheduleList';
+import AddScheduleButton from './AddScheduleButton';
 
 const Container = styled.div`
   background: linear-gradient(
@@ -13,6 +15,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
 `;
 
 const OuterLayout = styled.div`
@@ -27,11 +30,13 @@ const CalendarBox = styled.div``;
 
 const ScheduleBox = styled.div`
   display: flex;
+  flex-direction: column;
   margin: 9px 0px 0px 0px;
   background-color: rgba(228, 228, 228, 0.3);
   width: 100%;
   height: 272px;
   border-radius: 0px 0px 10px 10px;
+  position: relative;
 `;
 
 const Header = styled.div`
@@ -119,13 +124,13 @@ const Week = ({ start }) => {
       {DayName.map((_, i) => {
         if (NumStart + i < NowStart) {
           return (
-            <WeekDate day={i} opacity now={NumStart + i} key={i}>
+            <WeekDate day={i} opacity="true" now={NumStart + i} key={i}>
               {parseInt(LastMonthEnd) + NumStart + i}
             </WeekDate>
           );
         } else if (NumStart + i > NowEnd) {
           return (
-            <WeekDate day={i} opacity now={NumStart + i} key={i}>
+            <WeekDate day={i} opacity="true" now={NumStart + i} key={i}>
               {NumStart + i - NowEnd}
             </WeekDate>
           );
@@ -168,7 +173,10 @@ const Calendar = () => {
             <Week start={1 - NowStartDay + 35} />
           </CalendarDate>
         </CalendarBox>
-        <ScheduleBox />
+        <ScheduleBox>
+          <ScheduleList />
+          <AddScheduleButton />
+        </ScheduleBox>
       </OuterLayout>
     </Container>
   );

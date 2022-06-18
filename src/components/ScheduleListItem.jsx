@@ -28,6 +28,7 @@ const Container = styled.article`
   margin-top: 10px;
   padding: 10px 8px;
   box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
 `;
 
 const TitleContainer = styled.div`
@@ -50,14 +51,14 @@ const Title = styled.h2`
 
 const IconBell = styled.i`
   margin-right: 5px;
-  font-size: 9px;
+  font-size: 12px;
   display: flex;
   align-items: center;
 `;
 
 const ReservationTimeContainer = styled.div`
   display: flex;
-  margin-top: 7px;
+  margin-top: 10px;
   color: #73777b;
   font-size: 12px;
   font-weight: 700;
