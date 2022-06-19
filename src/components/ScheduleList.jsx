@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ScheduleListItem from './ScheduleListItem';
+import PropTypes from 'prop-types';
+import client from '../client';
 
 // 동아리방 신청 일정들 전체를 담아주는 컴포넌트입니다.
-const ScheduleList = () => {
+const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay }) => {
+  const week = ['일', '월', '화', '수', '목', '금', '토'];
+  const NowdayConvert = week[NowDay];
+
   const [scheduleDatas] = useState([
     {
       id: 1,
@@ -18,10 +23,33 @@ const ScheduleList = () => {
       reservationTime: '오후 07:30 ~ 오후 10:00',
     },
   ]);
+
+  const dataRequest = async () => {
+    try {
+      const res = await client.get('/api/v1/reservations/daily', {
+        headers: {
+          'Content-type': 'application/json',
+        },
+        params: {
+          year: NowYear,
+          month: `${NowMonth.replace(/(^0+)/, '')}`,
+          day: NowDate,
+        },
+      });
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    dataRequest();
+  }, []);
   return (
     <Container>
       <TextContainer>
-        <Date>05.16 월</Date>
+        <Date>
+          {NowMonth}.{NowDate} {NowdayConvert}
+        </Date>
         <Text> 동아리방 신청 현황</Text>
       </TextContainer>
       <ItemContainer>
@@ -61,5 +89,12 @@ const ItemContainer = styled.div`
   display: flex;
   align-items: center;
 `;
+
+ScheduleList.propTypes = {
+  NowYear: PropTypes.string,
+  NowMonth: PropTypes.string,
+  NowDate: PropTypes.string,
+  NowDay: PropTypes.number,
+};
 
 export default ScheduleList;

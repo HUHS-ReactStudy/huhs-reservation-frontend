@@ -148,6 +148,10 @@ const Week = ({ start }) => {
 const Calendar = () => {
   const NowYearAndMonth = dayjs().format(`YYYY년 MM월`); // 이번달
   const NowStartDay = dayjs().startOf('M').format('d'); // 이번달 첫날 요일
+  const NowYear = dayjs().format('YYYY');
+  const NowMonth = dayjs().format('MM'); // 이번달
+  const NowDate = dayjs().format('DD');
+  const NowDay = dayjs().get('day');
 
   return (
     <Container>
@@ -174,7 +178,7 @@ const Calendar = () => {
           </CalendarDate>
         </CalendarBox>
         <ScheduleBox>
-          <ScheduleList />
+          <ScheduleList NowMonth={NowMonth} NowDate={NowDate} NowDay={NowDay} NowYear={NowYear} />
           <AddScheduleButton />
         </ScheduleBox>
       </OuterLayout>
