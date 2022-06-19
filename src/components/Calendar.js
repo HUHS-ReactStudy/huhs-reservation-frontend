@@ -97,8 +97,8 @@ const Calendar = () => {
   const NowYearAndMonth = now.format(`YYYY년 MM월`); // 이번달
   const NowStartDay = now.startOf('M').format('d'); // 이번달 첫날 요일
 
-  const leftOnclick = () => setNow(now.subtract(1, 'month'));
-  const rightOnclick = () => setNow(now.add(1, 'month'));
+  const leftOnclick = () => setNow(now.subtract(1, 'month').set('date', 1));
+  const rightOnclick = () => setNow(now.add(1, 'month').set('date', 1));
 
   return (
     <Container>

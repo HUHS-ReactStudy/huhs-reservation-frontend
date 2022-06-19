@@ -50,14 +50,6 @@ const Week = ({ start }) => {
   const dateOnclick = date => {
     setNow(now.set('date', date));
   };
-  const dateBeforeOnclick = date => {
-    setNow(now.subtract(1, 'month'));
-    setNow(now.set('date', date));
-  };
-  const dateAfterOnclick = date => {
-    setNow(now.add(1, 'month'));
-    setNow(now.set('date', date));
-  };
 
   return (
     <WeekBox>
@@ -69,7 +61,7 @@ const Week = ({ start }) => {
               today={start + i}
               key={i}
               now={now.format(`DD`)}
-              onClick={() => dateBeforeOnclick(start + i)}
+              onClick={() => dateOnclick(start + i)}
             >
               {parseInt(LastMonthEnd) + start + i}
             </WeekDate>
@@ -81,7 +73,7 @@ const Week = ({ start }) => {
               today={start + i}
               key={i}
               now={now.format(`DD`)}
-              onClick={() => dateAfterOnclick(start + i)}
+              onClick={() => dateOnclick(start + i)}
             >
               {start + i - NowEnd}
             </WeekDate>
