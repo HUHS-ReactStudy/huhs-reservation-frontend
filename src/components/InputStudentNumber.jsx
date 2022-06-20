@@ -1,25 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 // 학번입력창 모달 관련 컴포넌트입니다.
-const InputStudentNumber = () => {
+const InputStudentNumber = ({ activateModal }) => {
   return (
-    <Container>
-      <UserInputContainer>
-        <UserInput type="number" autoFocus placeholder="학번을 입력하세요" />
-      </UserInputContainer>
-      <ButtonContainer>
-        <CancelButton type="button">취소</CancelButton>
-        <ConfirmButton type="submit">확인</ConfirmButton>
-      </ButtonContainer>
-    </Container>
+    <Background>
+      <Container>
+        <UserInputContainer>
+          <UserInput type="number" autoFocus placeholder="학번을 입력하세요" />
+        </UserInputContainer>
+        <ButtonContainer>
+          <CancelButton type="button" onClick={activateModal}>
+            취소
+          </CancelButton>
+          <ConfirmButton type="submit">확인</ConfirmButton>
+        </ButtonContainer>
+      </Container>
+    </Background>
   );
 };
+
+const Background = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 // 학번입력란 전체를 감싸고 있는 컨테이너입니다.
 const Container = styled.form`
   width: 320px;
   height: 200px;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -79,5 +95,9 @@ const ConfirmButton = styled.button`
   color: #0b4e84;
   font-weight: 700;
 `;
+
+InputStudentNumber.propTypes = {
+  activateModal: PropTypes.func,
+};
 
 export default InputStudentNumber;

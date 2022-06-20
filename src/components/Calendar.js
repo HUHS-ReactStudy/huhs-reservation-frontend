@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import React from 'react';
+import { useState } from 'react';
 import dayjs from 'dayjs';
 import ScheduleList from './ScheduleList';
 import AddScheduleButton from './AddScheduleButton';
+import InputStudentNumber from '../components/InputStudentNumber';
 
 const Container = styled.div`
   background: linear-gradient(
@@ -153,6 +155,12 @@ const Calendar = () => {
   const NowDate = dayjs().format('DD');
   const NowDay = dayjs().get('day');
 
+  const [openModal, setOpenModal] = useState(false);
+
+  const activateModal = () => {
+    setOpenModal(openModal => !openModal);
+  };
+
   return (
     <Container>
       <OuterLayout>
@@ -179,9 +187,10 @@ const Calendar = () => {
         </CalendarBox>
         <ScheduleBox>
           <ScheduleList NowMonth={NowMonth} NowDate={NowDate} NowDay={NowDay} NowYear={NowYear} />
-          <AddScheduleButton />
+          <AddScheduleButton activateModal={activateModal} />
         </ScheduleBox>
       </OuterLayout>
+      {openModal && <InputStudentNumber activateModal={activateModal} />}
     </Container>
   );
 };
