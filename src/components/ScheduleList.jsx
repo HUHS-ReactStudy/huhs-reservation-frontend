@@ -9,20 +9,30 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay }) => {
   const week = ['일', '월', '화', '수', '목', '금', '토'];
   const NowdayConvert = week[NowDay];
 
-  const [scheduleDatas] = useState([
+  const [scheduleDatas, setScheduleDatas] = useState([
     {
-      id: 1,
-      title: '노션 스터디',
-      color: '#B67DDF',
-      reservationTime: '오후 05:30 ~ 오후 07:30',
-    },
-    {
-      id: 2,
-      title: '리액트 스터디',
-      color: '#F8DC81',
-      reservationTime: '오후 07:30 ~ 오후 10:00',
+      purpose: '',
+      reservationId: '',
+      color: '',
+      startTime: '',
+      endTime: '',
     },
   ]);
+
+  // const [scheduleDatas, ] = useState([
+  //   {
+  //     id: 1,
+  //     title: '노션 스터디',
+  //     color: '#B67DDF',
+  //     reservationTime: '오후 05:30 ~ 오후 07:30',
+  //   },
+  //   {
+  //     id: 2,
+  //     title: '리액트 스터디',
+  //     color: '#F8DC81',
+  //     reservationTime: '오후 07:30 ~ 오후 10:00',
+  //   },
+  // ]);
 
   const dataRequest = async () => {
     try {
@@ -36,7 +46,7 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay }) => {
           day: NowDate,
         },
       });
-      console.log(res);
+      setScheduleDatas(res.data.data);
     } catch (e) {
       console.log(e);
     }
@@ -54,7 +64,7 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay }) => {
       </TextContainer>
       <ItemContainer>
         {scheduleDatas.map(scheduleData => {
-          return <ScheduleListItem key={scheduleData.id} scheduleData={scheduleData} />;
+          return <ScheduleListItem key={scheduleData.reservationId} scheduleData={scheduleData} />;
         })}
       </ItemContainer>
     </Container>

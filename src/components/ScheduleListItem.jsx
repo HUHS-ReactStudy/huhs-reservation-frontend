@@ -5,17 +5,19 @@ import PropTypes from 'prop-types';
 
 // 동아리방 사용 신청이 완료되면 생기는 개별 아이템에 해당하는 컴포넌트입니다.
 const ScheduleListItem = ({ scheduleData }) => {
-  const { title, reservationTime, color } = scheduleData;
+  const { purpose, color, startTime, endTime } = scheduleData;
   return (
     <Container>
       <TitleContainer>
-        <Title color={color}>{title}</Title>
+        <Title color={color}>{purpose}</Title>
       </TitleContainer>
       <ReservationTimeContainer>
         <IconBell>
           <FaRegBell />
         </IconBell>
-        <ReservationTime>{reservationTime}</ReservationTime>
+        <ReservationTime>
+          {startTime}~{endTime}
+        </ReservationTime>
       </ReservationTimeContainer>
     </Container>
   );
@@ -69,9 +71,10 @@ const ReservationTime = styled.p``;
 
 ScheduleListItem.propTypes = {
   scheduleData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    reservationTime: PropTypes.string.isRequired,
+    purpose: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
+    startTime: PropTypes.string.isRequired,
+    endTime: PropTypes.string.isRequired,
   }),
 };
 
