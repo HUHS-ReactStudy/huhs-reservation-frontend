@@ -25,7 +25,7 @@ const WeekDate = styled.p`
   margin-top: 3px;
   font-size: 12px;
   font-weight: 700;
-  color: ${props => (props.key === 0 ? '#F55353' : props.key === 6 ? '#668BC2' : '#73777b')};
+  color: ${props => (props.day === 0 ? '#F55353' : props.day === 6 ? '#668BC2' : '#73777b')};
   opacity: ${props => props.opacity && 0.4};
   cursor: pointer;
 `;
@@ -60,6 +60,7 @@ const Week = ({ start }) => {
               opacity="true"
               today={start + i}
               key={i}
+              day={i}
               now={now.format(`DD`)}
               onClick={() => dateOnclick(start + i)}
             >
@@ -72,6 +73,7 @@ const Week = ({ start }) => {
               opacity="true"
               today={start + i}
               key={i}
+              day={i}
               now={now.format(`DD`)}
               onClick={() => dateOnclick(start + i)}
             >
@@ -83,6 +85,7 @@ const Week = ({ start }) => {
             <WeekDate
               today={start + i}
               key={i}
+              day={i}
               now={now.format(`DD`)}
               onClick={() => dateOnclick(start + i)}
             >
