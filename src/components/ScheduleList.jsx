@@ -32,7 +32,6 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay, activateModal }) => 
         },
       });
       setScheduleDatas(res.data.data);
-      console.log(res.data.data);
     } catch (e) {
       console.log(e);
     }
