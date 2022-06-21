@@ -157,7 +157,15 @@ const Calendar = () => {
           <AddScheduleButton />
         </ScheduleBox>
       </OuterLayout>
-      {openModal && <InputStudentNumber activateModal={activateModal} />}
+      {openModal && (
+        <InputStudentNumber
+          activateModal={activateModal}
+          NowMonth={NowMonth}
+          NowDate={NowDate}
+          NowDay={NowDay}
+          NowYear={NowYear}
+        />
+      )}
     </Container>
   );
 };

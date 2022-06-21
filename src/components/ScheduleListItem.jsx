@@ -2,12 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaRegBell } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import EditContext from './InputForm/CreateContext';
 
 // 동아리방 사용 신청이 완료되면 생기는 개별 아이템에 해당하는 컴포넌트입니다.
-const ScheduleListItem = ({ scheduleData }) => {
-  const { purpose, color, startTime, endTime } = scheduleData;
+const ScheduleListItem = ({ scheduleData, activateModal }) => {
+  const { purpose, color, startTime, endTime, reservationId } = scheduleData;
+
+  const {
+    actions: { setUserReservationId },
+  } = useContext(EditContext);
+
+  const sendReservationId = e => {
+    e.target.id = reservationId;
+    setUserReservationId(reservationId);
+    activateModal();
+  };
+
   return (
-    <Container>
+    <Container onClick={sendReservationId}>
       <TitleContainer>
         <Title color={color}>{purpose}</Title>
       </TitleContainer>
@@ -75,7 +88,9 @@ ScheduleListItem.propTypes = {
     color: PropTypes.string.isRequired,
     startTime: PropTypes.string.isRequired,
     endTime: PropTypes.string.isRequired,
+    reservationId: PropTypes.string.isRequired,
   }),
+  activateModal: PropTypes.func,
 };
 
 export default ScheduleListItem;

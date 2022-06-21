@@ -4,11 +4,13 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import EditContext from './InputForm/CreateContext';
+import client from '../client';
 
 // 학번입력창 모달 관련 컴포넌트입니다.
-const InputStudentNumber = ({ activateModal }) => {
+const InputStudentNumber = ({ NowYear, NowMonth, NowDate, activateModal }) => {
   const {
-    actions: { setTitle, setHeight },
+    state: { userReservationId, tokenId },
+    actions: { setTitle, setHeight, setTokenId },
   } = useContext(EditContext);
 
   const [userInput, setUserInput] = useState({
@@ -39,6 +41,26 @@ const InputStudentNumber = ({ activateModal }) => {
     }
   };
 
+  const checkStudentNumber = async () => {
+    try {
+      const res = await client.post('/api/v1/reservations/auth', {
+        reservationId: userReservationId,
+        studentId: userInput.studentNumber,
+      });
+      const newTokenId = {
+        ...tokenId,
+        token: res.data.data,
+        id: userReservationId,
+      };
+      setTokenId(newTokenId);
+      setTitle('일정편집');
+      setHeight('100vh');
+    } catch (e) {
+      setErrorMessage(true);
+      console.log(e);
+    }
+  };
+
   return (
     <Background>
       <Container onSubmit={handleSubmit}>
@@ -56,13 +78,7 @@ const InputStudentNumber = ({ activateModal }) => {
           <CancelButton type="button" onClick={activateModal}>
             취소
           </CancelButton>
-          <ConfirmButton
-            type="submit"
-            onClick={() => {
-              setTitle('일정편집');
-              setHeight('100vh');
-            }}
-          >
+          <ConfirmButton type="submit" onClick={checkStudentNumber}>
             확인
           </ConfirmButton>
         </ButtonContainer>
@@ -151,6 +167,10 @@ const ConfirmButton = styled.button`
 `;
 
 InputStudentNumber.propTypes = {
+  NowYear: PropTypes.string,
+  NowMonth: PropTypes.string,
+  NowDate: PropTypes.string,
+  NowDay: PropTypes.number,
   activateModal: PropTypes.func,
 };
 

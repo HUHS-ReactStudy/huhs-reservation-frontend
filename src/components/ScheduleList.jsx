@@ -39,8 +39,9 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay, activateModal }) => 
   useEffect(() => {
     dataRequest();
   }, []);
+
   return (
-    <Container onClick={activateModal}>
+    <Container>
       <TextContainer>
         <Date>
           {NowMonth}.{NowDate} {NowdayConvert}
@@ -49,7 +50,13 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay, activateModal }) => 
       </TextContainer>
       <ItemContainer>
         {scheduleDatas.map(scheduleData => {
-          return <ScheduleListItem key={scheduleData.reservationId} scheduleData={scheduleData} />;
+          return (
+            <ScheduleListItem
+              key={scheduleData.reservationId}
+              activateModal={activateModal}
+              scheduleData={scheduleData}
+            />
+          );
         })}
       </ItemContainer>
     </Container>
