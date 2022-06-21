@@ -98,6 +98,7 @@ const DayName = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 export const nowContext = React.createContext();
 
 const Calendar = () => {
+  const [now, setNow] = useState(dayjs());
   const NowYearAndMonth = dayjs().format(`YYYY년 MM월`); // 이번달
   const NowStartDay = dayjs().startOf('M').format('d'); // 이번달 첫날 요일
   const NowYear = dayjs().format('YYYY');
