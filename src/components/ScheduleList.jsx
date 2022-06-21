@@ -67,9 +67,9 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay, activateModal }) => 
 const Container = styled.div`
   width: 100%;
   display: flex;
+  padding-bottom: 10px;
   flex-direction: column;
-  overflow: hidden;
-  overflow: scroll;
+  overflow-y: auto;
 `;
 
 const TextContainer = styled.header`
