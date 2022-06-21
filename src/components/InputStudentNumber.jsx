@@ -7,7 +7,7 @@ import EditContext from './InputForm/CreateContext';
 import client from '../client';
 
 // 학번입력창 모달 관련 컴포넌트입니다.
-const InputStudentNumber = ({ NowYear, NowMonth, NowDate, activateModal }) => {
+const InputStudentNumber = ({ activateModal }) => {
   const {
     state: { userReservationId, tokenId },
     actions: { setTitle, setHeight, setTokenId },
@@ -167,10 +167,6 @@ const ConfirmButton = styled.button`
 `;
 
 InputStudentNumber.propTypes = {
-  NowYear: PropTypes.string,
-  NowMonth: PropTypes.string,
-  NowDate: PropTypes.string,
-  NowDay: PropTypes.number,
   activateModal: PropTypes.func,
 };
 

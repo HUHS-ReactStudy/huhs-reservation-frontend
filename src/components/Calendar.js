@@ -101,10 +101,10 @@ const Calendar = () => {
   const [now, setNow] = useState(dayjs());
   const NowYearAndMonth = now.format(`YYYY년 MM월`); // 이번달
   const NowStartDay = now.startOf('M').format('d'); // 이번달 첫날 요일
-  const NowYear = dayjs().format('YYYY');
-  const NowMonth = dayjs().format('MM'); // 이번달
-  const NowDate = dayjs().format('DD');
-  const NowDay = dayjs().get('day');
+  const NowYear = now.format('YYYY');
+  const NowMonth = now.format('MM'); // 이번달
+  const NowDate = now.format('DD');
+  const NowDay = now.get('day');
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -157,15 +157,7 @@ const Calendar = () => {
           <AddScheduleButton />
         </ScheduleBox>
       </OuterLayout>
-      {openModal && (
-        <InputStudentNumber
-          activateModal={activateModal}
-          NowMonth={NowMonth}
-          NowDate={NowDate}
-          NowDay={NowDay}
-          NowYear={NowYear}
-        />
-      )}
+      {openModal && <InputStudentNumber activateModal={activateModal} />}
     </Container>
   );
 };

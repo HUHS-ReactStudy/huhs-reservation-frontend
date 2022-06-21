@@ -32,13 +32,14 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay, activateModal }) => 
         },
       });
       setScheduleDatas(res.data.data);
+      console.log(res.data.data);
     } catch (e) {
       console.log(e);
     }
   };
   useEffect(() => {
     dataRequest();
-  }, []);
+  }, [NowYear, `${NowMonth.replace(/(^0+)/, '')}`, NowDate]);
 
   return (
     <Container>
@@ -67,6 +68,8 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  overflow: scroll;
 `;
 
 const TextContainer = styled.header`
