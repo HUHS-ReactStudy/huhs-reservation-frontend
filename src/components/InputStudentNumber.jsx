@@ -1,14 +1,50 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 // 학번입력창 모달 관련 컴포넌트입니다.
 const InputStudentNumber = ({ activateModal }) => {
+  const [userInput, setUserInput] = useState({
+    studentNumber: '',
+  });
+
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const onChangeInput = useCallback(
+    e => {
+      const nextUserInput = {
+        ...userInput,
+        [e.target.name]: e.target.value,
+      };
+      setUserInput(nextUserInput);
+    },
+    [userInput],
+  );
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (userInput.studentNumber == '') {
+      setErrorMessage(true);
+      e.target.reset();
+    } else {
+      setErrorMessage(false);
+      e.target.reset();
+    }
+  };
+
   return (
     <Background>
-      <Container>
+      <Container onSubmit={handleSubmit}>
         <UserInputContainer>
-          <UserInput type="number" autoFocus placeholder="학번을 입력하세요" />
+          <UserInput
+            name="studentNumber"
+            type="number"
+            onChange={onChangeInput}
+            autoFocus
+            placeholder="학번을 입력하세요"
+            className={errorMessage ? 'activateErrorColor' : ''}
+          />
         </UserInputContainer>
         <ButtonContainer>
           <CancelButton type="button" onClick={activateModal}>
@@ -59,6 +95,10 @@ const UserInput = styled.input`
   width: 162px;
   height: 20px;
   text-align: center;
+
+  &.activateErrorColor {
+    border-bottom: 1px solid #f55353;
+  }
 
   &:focus {
     outline: none;
