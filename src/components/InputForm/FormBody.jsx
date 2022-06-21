@@ -13,7 +13,8 @@ const BackgroundBody = styled.div`
   bottom: 1px;
   height: ${props => props.height};
   background: white;
-  width: 390px;
+  width: 100vw;
+  /* width: 390px; */
   transition: 0.8s;
   overflow: scroll;
 `;
@@ -21,8 +22,10 @@ const BackgroundBody = styled.div`
 const MainBody = styled.main`
   margin: auto;
   background: #dbdbdb;
-  height: 844px;
-  width: 390px;
+  /* height: 844px; */
+  /* width: 390px; */
+  width: 100vw;
+  height: 100vh;
   border: 1px solid #dbdbdb;
   display: flex;
   flex-direction: column;
