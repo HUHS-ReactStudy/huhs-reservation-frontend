@@ -186,8 +186,14 @@ const Calendar = () => {
           </CalendarDate>
         </CalendarBox>
         <ScheduleBox>
-          <ScheduleList NowMonth={NowMonth} NowDate={NowDate} NowDay={NowDay} NowYear={NowYear} />
-          <AddScheduleButton activateModal={activateModal} />
+          <ScheduleList
+            activateModal={activateModal}
+            NowMonth={NowMonth}
+            NowDate={NowDate}
+            NowDay={NowDay}
+            NowYear={NowYear}
+          />
+          <AddScheduleButton />
         </ScheduleBox>
       </OuterLayout>
       {openModal && <InputStudentNumber activateModal={activateModal} />}

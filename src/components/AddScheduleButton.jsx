@@ -1,12 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as PlusIcon } from '../assets/images/plus.svg';
-import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import EditContext from './InputForm/CreateContext';
 
 // 새로운 일정 등록을 생성할 수 있는 버튼에 해당하는 컴포넌트입니다.
-const AddScheduleButton = ({ activateModal }) => {
+const AddScheduleButton = () => {
+  const {
+    actions: { setTitle, setHeight },
+  } = useContext(EditContext);
+
   return (
-    <AddButton onClick={activateModal} type="button">
+    <AddButton
+      type="button"
+      onClick={() => {
+        setTitle('일정등록');
+        setHeight('100vh');
+      }}
+    >
       <PlusIcon width="28" height="28" />
     </AddButton>
   );
@@ -25,9 +36,5 @@ const AddButton = styled.button`
   bottom: -20px;
   transform: translateX(302px);
 `;
-
-AddScheduleButton.propTypes = {
-  activateModal: PropTypes.func,
-};
 
 export default AddScheduleButton;

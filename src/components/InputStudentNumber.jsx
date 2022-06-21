@@ -2,9 +2,15 @@ import React, { useCallback } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import EditContext from './InputForm/CreateContext';
 
 // 학번입력창 모달 관련 컴포넌트입니다.
 const InputStudentNumber = ({ activateModal }) => {
+  const {
+    actions: { setTitle, setHeight },
+  } = useContext(EditContext);
+
   const [userInput, setUserInput] = useState({
     studentNumber: '',
   });
@@ -50,7 +56,15 @@ const InputStudentNumber = ({ activateModal }) => {
           <CancelButton type="button" onClick={activateModal}>
             취소
           </CancelButton>
-          <ConfirmButton type="submit">확인</ConfirmButton>
+          <ConfirmButton
+            type="submit"
+            onClick={() => {
+              setTitle('일정편집');
+              setHeight('100vh');
+            }}
+          >
+            확인
+          </ConfirmButton>
         </ButtonContainer>
       </Container>
     </Background>

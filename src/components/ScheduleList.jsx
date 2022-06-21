@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import client from '../client';
 
 // 동아리방 신청 일정들 전체를 담아주는 컴포넌트입니다.
-const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay }) => {
+const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay, activateModal }) => {
   const week = ['일', '월', '화', '수', '목', '금', '토'];
   const NowdayConvert = week[NowDay];
 
@@ -18,21 +18,6 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay }) => {
       endTime: '',
     },
   ]);
-
-  // const [scheduleDatas, ] = useState([
-  //   {
-  //     id: 1,
-  //     title: '노션 스터디',
-  //     color: '#B67DDF',
-  //     reservationTime: '오후 05:30 ~ 오후 07:30',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: '리액트 스터디',
-  //     color: '#F8DC81',
-  //     reservationTime: '오후 07:30 ~ 오후 10:00',
-  //   },
-  // ]);
 
   const dataRequest = async () => {
     try {
@@ -55,7 +40,7 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay }) => {
     dataRequest();
   }, []);
   return (
-    <Container>
+    <Container onClick={activateModal}>
       <TextContainer>
         <Date>
           {NowMonth}.{NowDate} {NowdayConvert}
@@ -105,6 +90,7 @@ ScheduleList.propTypes = {
   NowMonth: PropTypes.string,
   NowDate: PropTypes.string,
   NowDay: PropTypes.number,
+  activateModal: PropTypes.func,
 };
 
 export default ScheduleList;
