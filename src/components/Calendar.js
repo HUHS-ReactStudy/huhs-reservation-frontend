@@ -1,6 +1,10 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import dayjs from 'dayjs';
+import ScheduleList from './ScheduleList';
+import AddScheduleButton from './AddScheduleButton';
+import InputStudentNumber from '../components/InputStudentNumber';
 import Week from './Week';
 import { GoTriangleLeft, GoTriangleRight } from 'react-icons/go';
 
@@ -30,11 +34,13 @@ const CalendarBox = styled.div``;
 
 const ScheduleBox = styled.div`
   display: flex;
+  flex-direction: column;
   margin: 9px 0px 0px 0px;
   background-color: rgba(228, 228, 228, 0.3);
   width: 100%;
   height: 272px;
   border-radius: 0px 0px 10px 10px;
+  position: relative;
 `;
 
 const Header = styled.div`
@@ -92,10 +98,19 @@ const DayName = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 export const nowContext = React.createContext();
 
 const Calendar = () => {
-  const [now, setNow] = useState(dayjs()); // 클릭한 날짜
-
+  const [now, setNow] = useState(dayjs());
   const NowYearAndMonth = now.format(`YYYY년 MM월`); // 이번달
   const NowStartDay = now.startOf('M').format('d'); // 이번달 첫날 요일
+  const NowYear = now.format('YYYY');
+  const NowMonth = now.format('MM'); // 이번달
+  const NowDate = now.format('DD');
+  const NowDay = now.get('day');
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const activateModal = () => {
+    setOpenModal(openModal => !openModal);
+  };
 
   const leftOnclick = () => setNow(now.subtract(1, 'month').set('date', 1));
   const rightOnclick = () => setNow(now.add(1, 'month').set('date', 1));
@@ -131,8 +146,25 @@ const Calendar = () => {
             </nowContext.Provider>
           </CalendarDate>
         </CalendarBox>
-        <ScheduleBox />
+        <ScheduleBox>
+          <ScheduleList
+            activateModal={activateModal}
+            NowMonth={NowMonth}
+            NowDate={NowDate}
+            NowDay={NowDay}
+            NowYear={NowYear}
+          />
+          <AddScheduleButton />
+        </ScheduleBox>
       </OuterLayout>
+      {openModal && (
+        <InputStudentNumber
+          NowMonth={NowMonth}
+          NowDate={NowDate}
+          NowYear={NowYear}
+          activateModal={activateModal}
+        />
+      )}
     </Container>
   );
 };
