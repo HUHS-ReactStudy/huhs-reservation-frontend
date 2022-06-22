@@ -8,8 +8,10 @@ function App() {
     <div className="App">
       <GlobalStyle />
       <EditProvider>
-        <Calendar />
-        <FormBody />
+        <>
+          <Calendar />
+          <FormBody />
+        </>
       </EditProvider>
     </div>
   );

@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GroupBoxUp } from './TimeSetBox';
+import EditContext from './CreateContext';
+
 // 이름, 학번, 학과를 입력하는 input태그입니다.
 const InformationInput = styled.input`
   font-size: 14px;
@@ -21,44 +23,59 @@ const DetailContentBox = styled.textarea`
   border: none;
 `;
 
-const InformationBox = React.memo(function informationBox({ pageReset }) {
-  const InputRefName = useRef();
-  const InputRefNumber = useRef();
-  const InputRefMajor = useRef();
-  const InputRefDetail = useRef();
-  if (pageReset === '100vh') {
-    InputRefName.current.value = '';
-    InputRefNumber.current.value = '';
-    InputRefMajor.current.value = '';
-    InputRefDetail.current.value = '';
-  }
+const InformationBox = () => {
+  const {
+    state: { information },
+    actions: { setInformation },
+  } = useContext(EditContext);
+
+  const formChange = e => {
+    setInformation({ ...information, [e.target.name]: e.target.value });
+  };
   return (
     <div>
       <GroupBoxUp className="underLine topBox">
         <section>
           <span>이름</span>
-          <InformationInput placeholder="이름을 입력해주세요" ref={InputRefName} />
+          <InformationInput
+            name="name"
+            placeholder="이름을 입력해주세요"
+            value={information.name}
+            onChange={formChange}
+          />
         </section>
       </GroupBoxUp>
       <GroupBoxUp className="underLine">
         <section>
           <span>학번</span>
-          <InformationInput placeholder="학번을 입력해주세요" ref={InputRefNumber} />
+          <InformationInput
+            name="number"
+            type="number"
+            placeholder="학번을 입력해주세요"
+            value={information.number}
+            onChange={formChange}
+          />
         </section>
       </GroupBoxUp>
       <GroupBoxUp className="bottomBox">
         <section>
           <span>학과</span>
-          <InformationInput placeholder="학과를입력해주세요" ref={InputRefMajor} />
+          <InformationInput
+            name="major"
+            placeholder="학과를입력해주세요"
+            value={information.major}
+            onChange={formChange}
+          />
         </section>
       </GroupBoxUp>
-      <DetailContentBox placeholder="상세내용" ref={InputRefDetail} />
+      <DetailContentBox
+        name="detail"
+        placeholder="상세내용"
+        value={information.detail}
+        onChange={formChange}
+      />
     </div>
   );
-});
-
-InformationBox.propTypes = {
-  pageReset: PropTypes.string,
 };
 
 export default InformationBox;
