@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import ScheduleListItem from './ScheduleListItem';
 import PropTypes from 'prop-types';
 import client from '../client';
+import EditContext from './InputForm/CreateContext';
 
 // 동아리방 신청 일정들 전체를 담아주는 컴포넌트입니다.
 const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay, activateModal }) => {
   const week = ['일', '월', '화', '수', '목', '금', '토'];
   const NowdayConvert = week[NowDay];
+  const {
+    state: { adHeight },
+  } = useContext(EditContext);
 
   const [scheduleDatas, setScheduleDatas] = useState([
     {
@@ -38,7 +42,7 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay, activateModal }) => 
   };
   useEffect(() => {
     dataRequest();
-  }, [NowYear, `${NowMonth.replace(/(^0+)/, '')}`, NowDate]);
+  }, [NowYear, `${NowMonth.replace(/(^0+)/, '')}`, NowDate, adHeight]);
 
   return (
     <Container>

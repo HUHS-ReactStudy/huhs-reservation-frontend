@@ -10,7 +10,7 @@ import client from '../client';
 const InputStudentNumber = ({ NowYear, NowMonth, NowDate, activateModal }) => {
   const {
     state: { userReservationId, tokenId },
-    actions: { setTitle, setHeight, setTokenId },
+    actions: { setTitle, setHeight, setTokenId, setDate },
   } = useContext(EditContext);
 
   const [userInput, setUserInput] = useState({
@@ -52,9 +52,11 @@ const InputStudentNumber = ({ NowYear, NowMonth, NowDate, activateModal }) => {
         token: res.data.data,
         id: userReservationId,
       };
+      activateModal(false);
       setTokenId(newTokenId);
       setTitle('일정편집');
       setHeight('100vh');
+      setDate({ year: NowYear, month: `${NowMonth.replace(/(^0+)/, '')}`, day: NowDate });
     } catch (e) {
       setErrorMessage(true);
       console.log(e);
