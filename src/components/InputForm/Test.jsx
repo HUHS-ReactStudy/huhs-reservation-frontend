@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import EditContext from './CreateContext';
+import { beforeInformation } from './FormBody';
 
 const Test = function text() {
   const {
@@ -25,11 +26,12 @@ const Test = function text() {
       </button>
       <button
         onClick={() => {
-          setTitle('일정등록');
+          setTitle('일정편집');
           setHeight('100vh');
+          beforeInformation();
         }}
       >
-        일정수정!!!
+        수정사항 test
       </button>
     </>
   );
