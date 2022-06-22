@@ -50,6 +50,7 @@ const InformationBox = () => {
           <span>학번</span>
           <InformationInput
             name="number"
+            type="number"
             placeholder="학번을 입력해주세요"
             value={information.number}
             onChange={formChange}
