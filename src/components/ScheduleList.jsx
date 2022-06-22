@@ -49,15 +49,19 @@ const ScheduleList = ({ NowYear, NowMonth, NowDate, NowDay, activateModal }) => 
         <Text> 동아리방 신청 현황</Text>
       </TextContainer>
       <ItemContainer>
-        {scheduleDatas.map(scheduleData => {
-          return (
-            <ScheduleListItem
-              key={scheduleData.reservationId}
-              activateModal={activateModal}
-              scheduleData={scheduleData}
-            />
-          );
-        })}
+        {scheduleDatas
+          .sort((a, b) => {
+            return a.startTime > b.startTime ? 1 : -1;
+          })
+          .map(scheduleData => {
+            return (
+              <ScheduleListItem
+                key={scheduleData.reservationId}
+                activateModal={activateModal}
+                scheduleData={scheduleData}
+              />
+            );
+          })}
       </ItemContainer>
     </Container>
   );
