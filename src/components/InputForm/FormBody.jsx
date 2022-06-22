@@ -134,6 +134,19 @@ const FormBody = () => {
     color: colors,
     description: information.detail,
   };
+  const allReset = () => {
+    setColors('#F8DC81');
+    setHeight('0vh');
+    setPurpose('');
+    setTimeSet({ start: '', end: '' });
+    setInformation({
+      name: '',
+      number: '',
+      major: '',
+      detail: '',
+    });
+    setTokenId({ token: '', id: '' });
+  };
   // put, delete api 요청시 headers에 들어갈 내용입니다.
   const header = {
     Authorization: `Bearer ${tokenId.token}`,
@@ -229,6 +242,7 @@ const FormBody = () => {
           <button
             onClick={() => {
               setResultPost({ display: 'none', post: '성공' });
+              resultPost.post === '성공' ? allReset() : undefined;
             }}
           >
             확인
@@ -237,23 +251,7 @@ const FormBody = () => {
       </WarningBody>
       <MainBody>
         <HeaderBox>
-          <button
-            onClick={() => {
-              setColors('#F8DC81');
-              setHeight('0vh');
-              setPurpose('');
-              setTimeSet({ start: '', end: '' });
-              setInformation({
-                name: '',
-                number: '',
-                major: '',
-                detail: '',
-              });
-              setTokenId({ token: '', id: '' });
-            }}
-          >
-            취소
-          </button>
+          <button onClick={allReset}>취소</button>
           <div className="main-title">{title}</div>
           <button
             href="#"
