@@ -14,6 +14,8 @@ const BackgroundBody = styled.div`
   height: ${props => props.height};
   width: 100vw;
   background: white;
+  width: 100vw;
+  /* width: 390px; */
   transition: 0.8s;
   overflow: scroll;
 `;
@@ -21,8 +23,10 @@ const BackgroundBody = styled.div`
 const MainBody = styled.main`
   margin: auto;
   background: #dbdbdb;
-  height: 100vh;
+  /* height: 844px; */
+  /* width: 390px; */
   width: 100vw;
+  height: 100vh;
   border: 1px solid #dbdbdb;
   display: flex;
   flex-direction: column;
@@ -195,7 +199,7 @@ const FormBody = () => {
     console.log(apiData);
   };
 
-  // 일정 수정 혹은 삭제를 하려는 신청자의 전 작성 기록을 불러와 다시 보여주는 함수입니다.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~useCallback
+  // 일정 수정 혹은 삭제를 하려는 신청자의 전 작성 기록을 불러와 다시 보여주는 함수입니다.(useCallbask사용할 예정)
   const manInformation = data => {
     setColors(data.color);
     setPurpose(data.purpose);

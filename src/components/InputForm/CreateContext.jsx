@@ -8,6 +8,8 @@ const EditContext = createContext({
     purpose: '',
     timeSet: '',
     information: '',
+    userReservationId: '',
+    tokenId: { token: '', id: '' },
   },
   actions: {
     setTitle: () => {},
@@ -15,6 +17,8 @@ const EditContext = createContext({
     setPurpose: () => {},
     setTimeSet: () => {},
     setInformation: () => {},
+    setUserReservationId: () => {},
+    setTokenId: () => {},
   },
 });
 
@@ -25,14 +29,21 @@ const EditProvider = ({ children }) => {
   const [timeSet, setTimeSet] = useState({ start: '', end: '' });
   const [information, setInformation] = useState({ name: '', number: '', major: '', detail: '' });
   const [tokenId, setTokenId] = useState({ token: '', id: '' });
+  const [userReservationId, setUserReservationId] = useState('');
   const value = {
-    state: { title, adHeight, purpose, timeSet, information, tokenId },
-    actions: { setTitle, setHeight, setPurpose, setTimeSet, setInformation, setTokenId },
+    state: { title, adHeight, userReservationId, purpose, timeSet, information, tokenId },
+    actions: {
+      setTitle,
+      setHeight,
+      setUserReservationId,
+      setPurpose,
+      setTimeSet,
+      setInformation,
+      setTokenId,
+    },
   };
-
   return <EditContext.Provider value={value}>{children}</EditContext.Provider>;
 };
-
 EditProvider.propTypes = {
   children: PropTypes.element,
 };

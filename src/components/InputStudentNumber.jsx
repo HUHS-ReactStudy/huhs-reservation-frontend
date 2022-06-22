@@ -1,25 +1,107 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import EditContext from './InputForm/CreateContext';
+import client from '../client';
 
 // 학번입력창 모달 관련 컴포넌트입니다.
-const InputStudentNumber = () => {
+const InputStudentNumber = ({ NowYear, NowMonth, NowDate, activateModal }) => {
+  const {
+    state: { userReservationId, tokenId },
+    actions: { setTitle, setHeight, setTokenId },
+  } = useContext(EditContext);
+
+  const [userInput, setUserInput] = useState({
+    studentNumber: '',
+  });
+
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const onChangeInput = useCallback(
+    e => {
+      const nextUserInput = {
+        ...userInput,
+        [e.target.name]: e.target.value,
+      };
+      setUserInput(nextUserInput);
+    },
+    [userInput],
+  );
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (userInput.studentNumber == '') {
+      setErrorMessage(true);
+      e.target.reset();
+    } else {
+      setErrorMessage(false);
+      e.target.reset();
+    }
+  };
+
+  const checkStudentNumber = async () => {
+    try {
+      const res = await client.post('/api/v1/reservations/auth', {
+        reservationId: userReservationId,
+        studentId: userInput.studentNumber,
+      });
+      const newTokenId = {
+        ...tokenId,
+        token: res.data.data,
+        id: userReservationId,
+      };
+      setTokenId(newTokenId);
+      setTitle('일정편집');
+      setHeight('100vh');
+    } catch (e) {
+      setErrorMessage(true);
+      console.log(e);
+    }
+  };
+
   return (
-    <Container>
-      <UserInputContainer>
-        <UserInput type="number" autoFocus placeholder="학번을 입력하세요" />
-      </UserInputContainer>
-      <ButtonContainer>
-        <CancelButton type="button">취소</CancelButton>
-        <ConfirmButton type="submit">확인</ConfirmButton>
-      </ButtonContainer>
-    </Container>
+    <Background>
+      <Container onSubmit={handleSubmit}>
+        <UserInputContainer>
+          <UserInput
+            name="studentNumber"
+            type="number"
+            onChange={onChangeInput}
+            autoFocus
+            placeholder="학번을 입력하세요"
+            className={errorMessage ? 'activateErrorColor' : ''}
+          />
+        </UserInputContainer>
+        <ButtonContainer>
+          <CancelButton type="button" onClick={activateModal}>
+            취소
+          </CancelButton>
+          <ConfirmButton type="submit" onClick={checkStudentNumber}>
+            확인
+          </ConfirmButton>
+        </ButtonContainer>
+      </Container>
+    </Background>
   );
 };
+
+const Background = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 // 학번입력란 전체를 감싸고 있는 컨테이너입니다.
 const Container = styled.form`
   width: 320px;
   height: 200px;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -43,6 +125,10 @@ const UserInput = styled.input`
   width: 162px;
   height: 20px;
   text-align: center;
+
+  &.activateErrorColor {
+    border-bottom: 1px solid #f55353;
+  }
 
   &:focus {
     outline: none;
@@ -79,5 +165,12 @@ const ConfirmButton = styled.button`
   color: #0b4e84;
   font-weight: 700;
 `;
+
+InputStudentNumber.propTypes = {
+  NowYear: PropTypes.string,
+  NowMonth: PropTypes.string,
+  NowDate: PropTypes.string,
+  activateModal: PropTypes.func,
+};
 
 export default InputStudentNumber;
