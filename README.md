@@ -1,104 +1,153 @@
-## 1. 프로젝트 이름
+![header](https://capsule-render.vercel.app/api?type=transparent&fontColor=295CC2&text=HUHS%20Reservation%20System&fontSize=60&height=300&desc=React%20Study&descAlignY=70)
 
-- 개발 기간
+# Overview
 
-## 2. 배포 서버 url
+한양대학교 중앙동아리 HUHS 내 스터디들은 동아리방을 예약해서 스터디를 진행하는 경우가 많습니다. 동아리 규모도 크고 스터디의 종류도 많은 데 비해 동아리방 예약 체계가 잘 잡혀있지 않아서 여러 문제들이 있었습니다. 카카오톡으로 예약을 하는 경우, 아래 사진과 같이 이전 예약이 누락되거나 동아리원에게 공지가 되지 않아 시간대가 겹치는 문제가 종종 발생했습니다. 이를 해결하고자 동아리방 예약 일정을 한눈에 확인할 수 있는 웹 서비스를 개발하게 되었습니다. 사용자는 캘린더를 기반으로 동아리방 사용 예약/수정/삭제, 다른 일정 확인을 할 수 있습니다.
 
+HRS는 직관적인 UI를 통해 동아리방 예약 상태를 알아볼 수 있는 정보를 제공합니다. 이로 인해 다수의 사용자들간의 혼선을 막고 관리자 입장에서 체계적인 운영이 가능하도록 도움을 줄 수 있습니다.
 
-## 3. 개발 환경
+<br />
 
-## 4. 프로젝트 구조
+# 👨‍💻 Contributers
 
-```bash
+<br />
+
+<table align="center">
+  <tr height="130px">
+    <td align="center" width="130px">
+      <a href="https://github.com/KimGaeun0806"><img src="https://avatars.githubusercontent.com/u/80266418?v=4" style="border-radius:50%"/></a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/KIMMIKSIK"><img src="https://avatars.githubusercontent.com/u/98815511?v=4" style="border-radius:50%" /></a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/wjdgml3834"><img src="https://avatars.githubusercontent.com/u/88475978?v=4" style="border-radius:50%"/></a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/ordidxzero"><img src="https://avatars.githubusercontent.com/u/60772480?v=4" style="border-radius:50%"/></a>
+    </td>
+  </tr>
+  <tr height="50px">
+    <td align="center" width="130px">
+      <a href="https://github.com/KimGaeun0806">김가은</a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/KIMMIKSIK">김민식</a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/wjdgml3834">김정희</a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/ordidxzero">허유준</a>
+    </td>
+  </tr>
+</table>
+
+# 배포 링크
+
+https://huhs-reservation.netlify.app
+
+<br />
+
+# 개발 환경
+
+## 기술 스택
+
+### Frontend
+
+<table align="center">
+  <tr height="130px">
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/react.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/prettier.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/eslint.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/axios.svg"/></a>
+    </td>
+  </tr>
+</table>
+
+### Backend
+
+<table align="center">
+  <tr height="130px">
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/koa.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/mongodb.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/typescript-icon.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/webpack.svg"/></a>
+    </td>
+  </tr>
+</table>
+
+- `react` : (^18.1.0)
+- `prop-types`
+- `dayjs`
+- `styled-components`
+- `react-icons`
+- `styled-reset`
+- `axios`
+
+# 📁 프로젝트 구조
+
+```
 ├── README.md
 ├── package-lock.json
 ├── package.json
 ├── public
-│   ├── index.html
-│   └── robots.txt
+│   ├── index.html
+│   └── robots.txt
 └── src
     ├── App.js
     ├── assets
-    │   └── images
-    │       └── plus.svg
+    │   └── images
+    │       └── plus.svg
     ├── client.js
     ├── components
-    │   ├── AddScheduleButton.jsx
-    │   ├── Calendar.js
-    │   ├── Component.jsx
-    │   ├── InputForm
-    │   │   ├── CreateContext.jsx
-    │   │   ├── FormBody.jsx
-    │   │   ├── InformationBox.jsx
-    │   │   ├── PurposeBox.jsx
-    │   │   └── TimeSetBox.jsx
-    │   ├── InputStudentNumber.jsx
-    │   ├── ScheduleList.jsx
-    │   ├── ScheduleListItem.jsx
-    │   └── Week.js
+    │   ├── AddScheduleButton.jsx
+    │   ├── Calendar.js
+    │   ├── Component.jsx
+    │   ├── InputForm
+    │   │   ├── CreateContext.jsx
+    │   │   ├── FormBody.jsx
+    │   │   ├── InformationBox.jsx
+    │   │   ├── PurposeBox.jsx
+    │   │   └── TimeSetBox.jsx
+    │   ├── InputStudentNumber.jsx
+    │   ├── ScheduleList.jsx
+    │   ├── ScheduleListItem.jsx
+    │   └── Week.js
     ├── constants
-    │   └── index.js
+    │   └── index.js
     ├── index.js
     ├── pages
-    │   └── index.jsx
+    │   └── index.jsx
     └── styles
         ├── GlobalStyle.js
         ├── fonts
-        │   ├── NanumPenScript-Regular.ttf
-        │   ├── NotoSansKR-Black.otf
-        │   ├── NotoSansKR-Bold.otf
-        │   ├── NotoSansKR-Light.otf
-        │   ├── NotoSansKR-Medium.otf
-        │   ├── NotoSansKR-Regular.otf
-        │   └── NotoSansKR-Thin.otf
+        │   ├── NanumPenScript-Regular.ttf
+        │   ├── NotoSansKR-Black.otf
+        │   ├── NotoSansKR-Bold.otf
+        │   ├── NotoSansKR-Light.otf
+        │   ├── NotoSansKR-Medium.otf
+        │   ├── NotoSansKR-Regular.otf
+        │   └── NotoSansKR-Thin.otf
         └── index.css
-
-
 ```
 
-## 5. 데이터베이스 모델링(ERD)
+# 기능
 
+# 느낀점
 
-## 6. 기능 
-
-### 1) 메인 화면
-
-|달력 넘기기|
-|:-:|
-|![달력넘기기](https://user-images.githubusercontent.com/88475978/175762205-697d2c1a-a02b-4606-a8cf-9836a4290907.gif)
-
-
-### 2) 프로필
-
-|마이 프로필|팔로워|팔로잉|
-|:-:|:-:|:-:|
-|![프로필](https://user-images.githubusercontent.com/92927950/163724621-6799834c-a60b-456f-9cb6-0e00a606d68b.gif)|![팔로우](https://user-images.githubusercontent.com/92927950/163724680-aaf5c677-0966-4e29-a115-ece4f9a04618.gif)|![팔로잉](https://user-images.githubusercontent.com/92927950/163724682-2ffd9629-9746-4a7c-9fd0-511254ba2493.gif)
-
-|프로필 수정|로그아웃|유저 프로필|
-|:-:|:-:|:-:|
-|![프로필 수정](https://user-images.githubusercontent.com/92927950/163724768-f57579d7-11c8-4e7b-af3c-52339c726805.gif)|![로그아웃](https://user-images.githubusercontent.com/92927950/163724985-317b398d-dbb5-47a3-9c43-71d7d60fbc42.gif)|![유저 프로필](https://user-images.githubusercontent.com/92927950/163725179-01ced3b3-5434-4621-990f-98dee10a580b.gif)|
-
-
-<br>
-
-### 3) 게시글
-
-|작성|수정|삭제|
-|:-:|:-:|:-:|
-|![게시물 작성](https://user-images.githubusercontent.com/92927950/163723954-4fcb8a6d-a31c-4ae3-bc7d-2263cd2c9138.gif)|![게시물 수정](https://user-images.githubusercontent.com/92927950/163723957-8a7febc3-3c63-4f4a-9eaa-1808549df2b2.gif)|![게시물 삭제](https://user-images.githubusercontent.com/92927950/163723958-7aa3b5ed-83bb-4b2a-a3f9-2b51a5ffecdd.gif)|
-
-|신고|댓글 작성|댓글 신고 및 삭제|
-|:-:|:-:|:-:|
-|![게시글 신고](https://user-images.githubusercontent.com/92927950/163724911-587de063-5aa1-42ea-8ed5-0cb0d94bdb9a.gif)|![댓글 작성](https://user-images.githubusercontent.com/92927950/163724838-e27a234b-ce27-40de-9f81-aca84f18805f.gif)|![댓글 신고 및 삭제](https://user-images.githubusercontent.com/92927950/163724837-ff92476f-0a2b-4ec0-afc0-3ba5b94d1bb6.gif)|
-
-<br>
-
-### 4) 상품
-
-|등록|수정|삭제|
-|:-:|:-:|:-:|
-|![상품 등록](https://user-images.githubusercontent.com/92927950/163724024-ceb61044-9c50-4ae5-9887-33d9377ee03a.gif)|![상품 수정](https://user-images.githubusercontent.com/92927950/163724026-53f59a62-5b9e-4add-aa51-7df00633ab0d.gif)|![상품 삭제](https://user-images.githubusercontent.com/92927950/163724028-9ddf16aa-a5a2-4594-b9f8-10f87b5b04a9.gif)|
-
-
-
-## 7. 느낀점 
+..
