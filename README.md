@@ -1,70 +1,148 @@
-# Getting Started with Create React App
+![header](https://capsule-render.vercel.app/api?type=transparent&fontColor=295CC2&text=HUHS%20Reservation%20System&fontSize=60&height=300&desc=React%20Study&descAlignY=70)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#  Overview
+한양대학교 중앙동아리 HUHS 내 스터디들은 동아리방을 예약해서 스터디를 진행하는 경우가 많습니다. 동아리 규모도 크고 스터디의 종류도 많은 데 비해 동아리방 예약 체계가 잘 잡혀있지 않아서 여러 문제들이 있었습니다. 카카오톡으로 예약을 하는 경우, 아래 사진과 같이 이전 예약이 누락되거나 동아리원에게 공지가 되지 않아 시간대가 겹치는 문제가 종종 발생했습니다. 이를 해결하고자 동아리방 예약 일정을 한눈에 확인할 수 있는 웹 서비스를 개발하게 되었습니다. 사용자는 캘린더를 기반으로 동아리방 사용 예약/수정/삭제, 다른 일정 확인을 할 수 있습니다.
 
-## Available Scripts
+HRS는 직관적인 UI를 통해 동아리방 예약 상태를 알아볼 수 있는 정보를 제공합니다. 이로 인해 다수의 사용자들간의 혼선을 막고 관리자 입장에서 체계적인 운영이 가능하도록 도움을 줄 수 있습니다.
 
-In the project directory, you can run:
+<br />
 
-### `npm start`
+# 👨‍💻 Contributers
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<table align="center">
+  <tr height="130px">
+    <td align="center" width="130px">
+      <a href="https://github.com/KimGaeun0806"><img src="https://avatars.githubusercontent.com/u/80266418?v=4" style="border-radius:50%"/></a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/KIMMIKSIK"><img src="https://avatars.githubusercontent.com/u/98815511?v=4" style="border-radius:50%" /></a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/wjdgml3834"><img src="https://avatars.githubusercontent.com/u/88475978?v=4" style="border-radius:50%"/></a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/ordidxzero"><img src="https://avatars.githubusercontent.com/u/60772480?v=4" style="border-radius:50%"/></a>
+    </td>
+  </tr>
+  <tr height="50px">
+    <td align="center" width="130px">
+      <a href="https://github.com/KimGaeun0806">김가은</a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/KIMMIKSIK">김민식</a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/wjdgml3834">김정희</a>
+    </td>
+    <td align="center" width="130px">
+      <a href="https://github.com/ordidxzero">허유준</a>
+    </td>
+  </tr>
+</table>
 
-### `npm test`
+# 배포 링크
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://huhs-reservation.netlify.app
 
-### `npm run build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 개발 환경
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 기술 스택
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Frontend
+<table align="center">
+  <tr height="130px">
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/react.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/prettier.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/eslint.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/axios.svg"/></a>
+    </td>
+  </tr>
+</table>
 
-### `npm run eject`
+### Backend
+<table align="center">
+  <tr height="130px">
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/koa.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/mongodb.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/typescript-icon.svg"/></a>
+    </td>
+    <td align="center" width="130px">
+      <img src="https://cdn.svgporn.com/logos/webpack.svg"/></a>
+    </td>
+  </tr>
+</table>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `react` : (^18.1.0)
+- `prop-types`
+- `dayjs`
+- `styled-components`
+- `react-icons`
+- `styled-reset`
+- `axios`
+  
+# 📁 프로젝트 구조
+```
+├── README.md
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   └── robots.txt
+└── src
+    ├── App.js
+    ├── assets
+    │   └── images
+    │       └── plus.svg
+    ├── client.js
+    ├── components
+    │   ├── AddScheduleButton.jsx
+    │   ├── Calendar.js
+    │   ├── Component.jsx
+    │   ├── InputForm
+    │   │   ├── CreateContext.jsx
+    │   │   ├── FormBody.jsx
+    │   │   ├── InformationBox.jsx
+    │   │   ├── PurposeBox.jsx
+    │   │   └── TimeSetBox.jsx
+    │   ├── InputStudentNumber.jsx
+    │   ├── ScheduleList.jsx
+    │   ├── ScheduleListItem.jsx
+    │   └── Week.js
+    ├── constants
+    │   └── index.js
+    ├── index.js
+    ├── pages
+    │   └── index.jsx
+    └── styles
+        ├── GlobalStyle.js
+        ├── fonts
+        │   ├── NanumPenScript-Regular.ttf
+        │   ├── NotoSansKR-Black.otf
+        │   ├── NotoSansKR-Bold.otf
+        │   ├── NotoSansKR-Light.otf
+        │   ├── NotoSansKR-Medium.otf
+        │   ├── NotoSansKR-Regular.otf
+        │   └── NotoSansKR-Thin.otf
+        └── index.css
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# 기능
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 느낀점
+..
