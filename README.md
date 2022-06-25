@@ -12,7 +12,7 @@ HRS는 직관적인 UI를 통해 동아리방 예약 상태를 알아볼 수 있
 
 <br />
 
-<table align="center">
+<table >
   <tr height="130px">
     <td align="center" width="130px">
       <a href="https://github.com/KimGaeun0806"><img src="https://avatars.githubusercontent.com/u/80266418?v=4" style="border-radius:50%"/></a>
@@ -55,7 +55,7 @@ https://huhs-reservation.netlify.app
 
 ### Frontend
 
-<table align="center">
+<table>
   <tr height="130px">
     <td align="center" width="130px">
       <img src="https://cdn.svgporn.com/logos/react.svg"/></a>
@@ -74,7 +74,7 @@ https://huhs-reservation.netlify.app
 
 ### Backend
 
-<table align="center">
+<table>
   <tr height="130px">
     <td align="center" width="130px">
       <img src="https://cdn.svgporn.com/logos/koa.svg"/></a>
@@ -147,6 +147,18 @@ https://huhs-reservation.netlify.app
 ```
 
 # 기능
+
+### 1) 메인 화면
+
+|캘린더 기능|동아리방 신청 예약화면|학번 인증 기능|
+|:-:|:-:|:-:|
+|![달력넘기기](https://user-images.githubusercontent.com/88475978/175766378-41393f1b-7bf5-410b-881a-1ec71622cd51.gif)|![동아리방-신청현황-보여주기](https://user-images.githubusercontent.com/88475978/175766706-37cc5860-c09b-43dc-b84e-d38222d14dcc.gif)|![학번인증](https://user-images.githubusercontent.com/88475978/175766735-6c8867ae-5ed2-483f-9732-4ee5ffc7aa3e.gif)|
+
+### 2) 일정 조율 화면
+|일정 생성 |일정 편집|일정 삭제|
+|:-:|:-:|:-:|
+|![일정등록](https://user-images.githubusercontent.com/88475978/175767007-51abf779-e67d-49aa-8322-98b915c3dd56.gif)|![일정편집](https://user-images.githubusercontent.com/88475978/175766730-87bdfe3c-f713-43fa-a7e7-3efafa0cdca5.gif)| ![일정-삭제](https://user-images.githubusercontent.com/88475978/175766717-c514a1e9-92a4-4f30-ae49-2d289ee625bf.gif)|
+
 
 # 느낀점
 
