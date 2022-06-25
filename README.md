@@ -1,6 +1,7 @@
 ![header](https://capsule-render.vercel.app/api?type=transparent&fontColor=295CC2&text=HUHS%20Reservation%20System&fontSize=60&height=300&desc=React%20Study&descAlignY=70)
 
-#  Overview
+# Overview
+
 한양대학교 중앙동아리 HUHS 내 스터디들은 동아리방을 예약해서 스터디를 진행하는 경우가 많습니다. 동아리 규모도 크고 스터디의 종류도 많은 데 비해 동아리방 예약 체계가 잘 잡혀있지 않아서 여러 문제들이 있었습니다. 카카오톡으로 예약을 하는 경우, 아래 사진과 같이 이전 예약이 누락되거나 동아리원에게 공지가 되지 않아 시간대가 겹치는 문제가 종종 발생했습니다. 이를 해결하고자 동아리방 예약 일정을 한눈에 확인할 수 있는 웹 서비스를 개발하게 되었습니다. 사용자는 캘린더를 기반으로 동아리방 사용 예약/수정/삭제, 다른 일정 확인을 할 수 있습니다.
 
 HRS는 직관적인 UI를 통해 동아리방 예약 상태를 알아볼 수 있는 정보를 제공합니다. 이로 인해 다수의 사용자들간의 혼선을 막고 관리자 입장에서 체계적인 운영이 가능하도록 도움을 줄 수 있습니다.
@@ -11,7 +12,7 @@ HRS는 직관적인 UI를 통해 동아리방 예약 상태를 알아볼 수 있
 
 <br />
 
-<table align="center">
+<table >
   <tr height="130px">
     <td align="center" width="130px">
       <a href="https://github.com/KimGaeun0806"><img src="https://avatars.githubusercontent.com/u/80266418?v=4" style="border-radius:50%"/></a>
@@ -53,7 +54,8 @@ https://huhs-reservation.netlify.app
 ## 기술 스택
 
 ### Frontend
-<table align="center">
+
+<table>
   <tr height="130px">
     <td align="center" width="130px">
       <img src="https://cdn.svgporn.com/logos/react.svg"/></a>
@@ -71,7 +73,8 @@ https://huhs-reservation.netlify.app
 </table>
 
 ### Backend
-<table align="center">
+
+<table>
   <tr height="130px">
     <td align="center" width="130px">
       <img src="https://cdn.svgporn.com/logos/koa.svg"/></a>
@@ -95,54 +98,68 @@ https://huhs-reservation.netlify.app
 - `react-icons`
 - `styled-reset`
 - `axios`
-  
+
 # 📁 프로젝트 구조
+
 ```
 ├── README.md
 ├── package-lock.json
 ├── package.json
 ├── public
-│   ├── index.html
-│   └── robots.txt
+│   ├── index.html
+│   └── robots.txt
 └── src
     ├── App.js
     ├── assets
-    │   └── images
-    │       └── plus.svg
+    │   └── images
+    │       └── plus.svg
     ├── client.js
     ├── components
-    │   ├── AddScheduleButton.jsx
-    │   ├── Calendar.js
-    │   ├── Component.jsx
-    │   ├── InputForm
-    │   │   ├── CreateContext.jsx
-    │   │   ├── FormBody.jsx
-    │   │   ├── InformationBox.jsx
-    │   │   ├── PurposeBox.jsx
-    │   │   └── TimeSetBox.jsx
-    │   ├── InputStudentNumber.jsx
-    │   ├── ScheduleList.jsx
-    │   ├── ScheduleListItem.jsx
-    │   └── Week.js
+    │   ├── AddScheduleButton.jsx
+    │   ├── Calendar.js
+    │   ├── Component.jsx
+    │   ├── InputForm
+    │   │   ├── CreateContext.jsx
+    │   │   ├── FormBody.jsx
+    │   │   ├── InformationBox.jsx
+    │   │   ├── PurposeBox.jsx
+    │   │   └── TimeSetBox.jsx
+    │   ├── InputStudentNumber.jsx
+    │   ├── ScheduleList.jsx
+    │   ├── ScheduleListItem.jsx
+    │   └── Week.js
     ├── constants
-    │   └── index.js
+    │   └── index.js
     ├── index.js
     ├── pages
-    │   └── index.jsx
+    │   └── index.jsx
     └── styles
         ├── GlobalStyle.js
         ├── fonts
-        │   ├── NanumPenScript-Regular.ttf
-        │   ├── NotoSansKR-Black.otf
-        │   ├── NotoSansKR-Bold.otf
-        │   ├── NotoSansKR-Light.otf
-        │   ├── NotoSansKR-Medium.otf
-        │   ├── NotoSansKR-Regular.otf
-        │   └── NotoSansKR-Thin.otf
+        │   ├── NanumPenScript-Regular.ttf
+        │   ├── NotoSansKR-Black.otf
+        │   ├── NotoSansKR-Bold.otf
+        │   ├── NotoSansKR-Light.otf
+        │   ├── NotoSansKR-Medium.otf
+        │   ├── NotoSansKR-Regular.otf
+        │   └── NotoSansKR-Thin.otf
         └── index.css
 ```
 
 # 기능
 
+### 1) 메인 화면
+
+|캘린더 기능|동아리방 신청 예약화면|학번 인증 기능|
+|:-:|:-:|:-:|
+|![달력넘기기](https://user-images.githubusercontent.com/88475978/175766378-41393f1b-7bf5-410b-881a-1ec71622cd51.gif)|![동아리방-신청현황-보여주기](https://user-images.githubusercontent.com/88475978/175766706-37cc5860-c09b-43dc-b84e-d38222d14dcc.gif)|![학번인증](https://user-images.githubusercontent.com/88475978/175766735-6c8867ae-5ed2-483f-9732-4ee5ffc7aa3e.gif)|
+
+### 2) 일정 조율 화면
+|일정 생성 |일정 편집|일정 삭제|
+|:-:|:-:|:-:|
+|![일정등록](https://user-images.githubusercontent.com/88475978/175767007-51abf779-e67d-49aa-8322-98b915c3dd56.gif)|![일정편집](https://user-images.githubusercontent.com/88475978/175766730-87bdfe3c-f713-43fa-a7e7-3efafa0cdca5.gif)| ![일정-삭제](https://user-images.githubusercontent.com/88475978/175766717-c514a1e9-92a4-4f30-ae49-2d289ee625bf.gif)|
+
+
 # 느낀점
+
 ..
