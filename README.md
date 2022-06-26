@@ -6,6 +6,10 @@
 
 HRS는 직관적인 UI를 통해 동아리방 예약 상태를 알아볼 수 있는 정보를 제공합니다. 이로 인해 다수의 사용자들간의 혼선을 막고 관리자 입장에서 체계적인 운영이 가능하도록 도움을 줄 수 있습니다.
 
+<img src="https://user-images.githubusercontent.com/60772480/175800655-4cd39786-37f3-4431-9c60-d23739078875.jpg" style="height: 450px" />
+<img src="https://user-images.githubusercontent.com/60772480/175800678-eb544505-205e-42de-b84e-9ec8cd033ffc.jpg" />
+
+
 <br />
 
 # 👨‍💻 Contributers
@@ -43,13 +47,20 @@ HRS는 직관적인 UI를 통해 동아리방 예약 상태를 알아볼 수 있
   </tr>
 </table>
 
-# 배포 링크
+# 🚀 배포 링크
 
 https://huhs-reservation.netlify.app
 
 <br />
 
-# 개발 환경
+# 🗓 개발 기간
+첫 커밋부터 1차 배포까지의 기간을 의미합니다.
+## Frontend
+2022.05.23 ~ 2022.06.23
+## Backend
+2022.05.12 ~ 2022.05.23
+
+# 🛠 개발 환경
 
 ## 기술 스택
 
@@ -146,7 +157,15 @@ https://huhs-reservation.netlify.app
         └── index.css
 ```
 
-# 기능
+# 🏃‍♀️ 프로젝트 실행방법
+```bash
+git clone https://github.com/HUHS-ReactStudy/huhs-reservation-frontend.git
+cd huhs-reservation-frontend
+npm i
+npm run start
+```
+
+# 🤖 기능
 
 ### 1) 메인 화면
 
@@ -160,6 +179,6 @@ https://huhs-reservation.netlify.app
 |![일정등록](https://user-images.githubusercontent.com/88475978/175767007-51abf779-e67d-49aa-8322-98b915c3dd56.gif)|![일정편집](https://user-images.githubusercontent.com/88475978/175766730-87bdfe3c-f713-43fa-a7e7-3efafa0cdca5.gif)| ![일정-삭제](https://user-images.githubusercontent.com/88475978/175766717-c514a1e9-92a4-4f30-ae49-2d289ee625bf.gif)|
 
 
-# 느낀점
+# 🙋‍♀️ 느낀점
 
 ..
