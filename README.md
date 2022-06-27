@@ -7,7 +7,7 @@
 HRS는 직관적인 UI를 통해 동아리방 예약 상태를 알아볼 수 있는 정보를 제공합니다. 이로 인해 다수의 사용자들간의 혼선을 막고 관리자 입장에서 체계적인 운영이 가능하도록 도움을 줄 수 있습니다.
 
 <img src="https://user-images.githubusercontent.com/60772480/175800655-4cd39786-37f3-4431-9c60-d23739078875.jpg" style="height: 450px" />
-<img src="https://user-images.githubusercontent.com/60772480/175800678-eb544505-205e-42de-b84e-9ec8cd033ffc.jpg" />
+<img src="https://user-images.githubusercontent.com/60772480/175800678-eb544505-205e-42de-b84e-9ec8cd033ffc.jpg" style="width: 505px" />
 
 <br />
 
